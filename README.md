@@ -1,7 +1,7 @@
 # OpenRASP 
 
 [![Build Status](https://www.travis-ci.org/baidu/openrasp.svg?branch=master)](https://www.travis-ci.org/baidu/openrasp)
-[![Build Status](https://img.shields.io/badge/README-Switch Language-yellow.svg)](readme-zh_CN.md)
+[![Build Status](https://img.shields.io/badge/README-切换语言-yellow.svg)](readme-zh_CN.md)
 
 ### Introduction
 
