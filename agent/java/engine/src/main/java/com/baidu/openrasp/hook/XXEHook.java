@@ -30,7 +30,7 @@ import java.util.HashSet;
 
 /**
  * Created by lxk on 6/1/17.
- * XXE漏洞检测hook点
+ * XXE vulnerability detection hook point
  */
 public class XXEHook extends AbstractClassHook {
 
@@ -42,14 +42,14 @@ public class XXEHook extends AbstractClassHook {
     };
 
     /**
-     * @return 当前线程已触发检测的expandedSystemIds
+     * @return The currently thread has triggered the detected expandedSystemIds
      */
     public static HashSet<String> getLocalExpandedSystemIds() {
         return localExpandedSystemIds.get();
     }
 
     /**
-     * 重置当前线程已触发检测的expandedSystemIds
+     * Reset the expandedSystemIds that the current thread has triggered detection
      */
     public static void resetLocalExpandedSystemIds() {
         localExpandedSystemIds.get().clear();
@@ -89,7 +89,7 @@ public class XXEHook extends AbstractClassHook {
     }
 
     /**
-     * xml语句解析hook点
+     * xml statement parsing hook point
      *
      * @param expandedSystemId
      */

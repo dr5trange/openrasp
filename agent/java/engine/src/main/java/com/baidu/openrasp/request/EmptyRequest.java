@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Created by tyy on 18-5-11.
  *
- * 空请求实体，用于匹配非请求检测
+ * Empty request entity for matching unsolicited detection
  */
 public class EmptyRequest extends AbstractRequest {
 

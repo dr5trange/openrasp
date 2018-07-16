@@ -21,8 +21,8 @@ import java.lang.instrument.Instrumentation;
 /**
  * Created by tyy on 18-2-1.
  *
- * 每个子模块入口都需要继承的模块
- * 模块入口类 配置在子模块 jar 包的 MANIFEST 配置中
+ * Modules that need to be inherited for each submodule entry
+ * Module entry class configuration in the MANIFEST configuration of the submodule jar package
  */
 public interface Module {
 

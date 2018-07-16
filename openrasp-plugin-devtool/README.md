@@ -30,11 +30,12 @@ Example:
 ```bash
 $ rasp check plugin.js
 
-  √ 插件代码检查 代码规范: 150ms
-  √ 插件代码检查 模拟环境: 15ms
-  √ 插件能力测试 sql 安全 DESC wp_users: 16ms
-  √ 插件能力测试 sql 安全 select name, email from users where id = 1002: 0ms
-  √ 插件能力测试 sql 不安全 select name, email from users where id = 1002 and 1=2 union select table_name, table_schema from information_schema.tables: 0ms
+  Plugin  Plugin code check code specification: 150ms
+  Plugin  Plug-in code check simulation environment: 15ms
+  Plugin  Plug-in ability test sql security DESC wp_users: 16ms
+  Plugin  Plug-in ability test sql security select name, email from users where id = 1002: 0ms
+  √ Plugin ability test sql is not safe  select name, email from users where id = 1002 and 1=2 union select table_name, table_schema from information_schema.tables: 0ms
+
 
   5 passing (238ms)
 ```

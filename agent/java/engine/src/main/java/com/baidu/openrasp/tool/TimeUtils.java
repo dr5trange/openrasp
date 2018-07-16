@@ -23,15 +23,15 @@ import java.util.TimeZone;
 
 /**
  * Created by lxk on 17-3-31.
- * 时间信息格式化工具类
+ * Time information formatting tool class
  */
 public class TimeUtils {
 
     public static final int DAY_MILLISECOND = 86400000;
     /**
-     * 获取ISO8601格式化时间
+     * Get ISO8601 formatting time
      *
-     * @return 格式化时间
+     * @return formatting time
      */
     public static String getISO8601FormatDate() {
         TimeZone timeZone = TimeZone.getTimeZone("UTC");

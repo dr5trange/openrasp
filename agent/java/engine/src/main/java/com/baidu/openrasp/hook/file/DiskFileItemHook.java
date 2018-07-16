@@ -64,10 +64,10 @@ public class DiskFileItemHook extends AbstractClassHook {
     }
 
     /**
-     * 文件上传hook点
+     * File upload hook point
      *
-     * @param name    文件名
-     * @param content 文件数据
+     * @param name filename
+     * @param content file data
      */
     public static void checkFileUpload(String name, byte[] content) {
         if (name != null && content != null) {

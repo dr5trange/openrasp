@@ -22,9 +22,9 @@ import org.apache.commons.io.monitor.FileAlterationObserver;
 
 /**
  * Created by tyy on 6/7/17.
- * 可用于监听某一个文件夹事件的监听器
- * 使用系统事件作为驱动，实时性高
- * 将事件传递给观察者，由观察者扫描该文件夹来进一步确定事件事件具体类型
+ * Listener that can be used to listen to a folder event
+ * Use system events as a driver, high real-time performance
+ * Pass the event to the observer, which scans the folder to further determine the specific type of event event
  */
 public class FileEventListener implements JNotifyListener {
 
@@ -33,14 +33,14 @@ public class FileEventListener implements JNotifyListener {
     /**
      * constructor
      *
-     * @param observer 关注某一个文件夹事件的观察者
+     * @param observer Watchers of a folder event
      */
     public FileEventListener(FileAlterationObserver observer) {
         this.observer = observer;
     }
 
     /**
-     * 文件重命名事件回调接口
+     * File rename event callback interface
      */
     @Override
     public void fileRenamed(int wd, String rootPath, String oldName,
@@ -49,7 +49,7 @@ public class FileEventListener implements JNotifyListener {
     }
 
     /**
-     * 文件修改事件回调接口
+     * File modification event callback interface
      */
     @Override
     public void fileModified(int wd, String rootPath, String name) {
@@ -57,7 +57,7 @@ public class FileEventListener implements JNotifyListener {
     }
 
     /**
-     * 文件文件删除事件回调接口
+     * File file deletion event callback interface
      */
     @Override
     public void fileDeleted(int wd, String rootPath, String name) {
@@ -65,7 +65,7 @@ public class FileEventListener implements JNotifyListener {
     }
 
     /**
-     * 文件创建事件回调接口
+     * File creation event callback interface
      */
     @Override
     public void fileCreated(int wd, String rootPath, String name) {

@@ -24,7 +24,7 @@ import com.baidu.openrasp.plugin.info.SecurityPolicyInfo;
 /**
  * Created by tyy on 17-11-22.
  *
- * 基线检测事件监听器
+ * Baseline detection event listener
  */
 public class PolicyCheckListener implements CheckEventListener {
 

@@ -21,7 +21,7 @@ import com.baidu.openrasp.hook.AbstractClassHook;
 /**
  * Created by tyy on 17-11-6.
  *
- * sql相关hook点的基类
+ * The base class of sql related hook points
  */
 public abstract class AbstractSqlHook extends AbstractClassHook {
 

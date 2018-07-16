@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 
-describe('插件能力测试', function () {
+describe('plugin ability test', function () {
     describe('sql', function () {
         before(function () {
             if (!Array.isArray(RASP.checkPoints.sql) ||
@@ -19,7 +19,8 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function ()  {
+        describe('Safety ', function ()  {
+
             let safe = fs.readFileSync(path.resolve(__dirname, './sql-safe'), 'utf8')
                 .replace(/\r\n/g, '\n').split('\n').filter(sql => sql.trim().length !== 0);
             safe.forEach(sql => {
@@ -37,7 +38,7 @@ describe('插件能力测试', function () {
             });
         });
 
-        describe('不安全', function ()  {
+        describe('Unsafe ', function () {
             let unsafe = fs.readFileSync(path.resolve(__dirname, './sql-unsafe'), 'utf8')
                 .replace(/\r\n/g, '\n').split('\n').filter(sql => sql.trim().length !== 0);
             unsafe.forEach(sql => {
@@ -64,8 +65,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('directory', function () {
@@ -76,8 +78,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('request', function () {
@@ -88,8 +91,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('readFile', function () {
@@ -100,8 +104,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('writeFile', function () {
@@ -112,8 +117,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('fileUpload', function () {
@@ -124,8 +130,9 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 
     describe('command', function () {
@@ -136,7 +143,8 @@ describe('插件能力测试', function () {
             }
         });
 
-        describe('安全', function () {});
-        describe('不安全', function () {});
+        describe('Safety ', function () {});
+
+        describe('Unsafe ', function () {});
     });
 });

@@ -1,5 +1,5 @@
 <form>
-  <label>攻击事件</label>
+  <label>Attack event</label>
   <search id="global">
     <query>`modsec_alert` attack_source="$source_tok$"  target="$target_tok$" url="$url_tok$" attack_params="$attack_params_tok$" server_type="$server_type_tok$" intercept_state="$intercept_state_tok$" attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$" search attack_source="$source_tok$"  target="$target_tok$" url="$url_tok$" attack_params="$attack_params_tok$" server_type="$server_type_tok$" intercept_state="$intercept_state_tok$" attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$"  | table _time attack_source  target url attack_params server_type intercept_state attack_type plugin_name</query>
     <earliest>$time_tok.earliest$</earliest>
@@ -7,21 +7,21 @@
   </search>
   <fieldset submitButton="true" autoRun="true">
     <input type="time" token="time_tok" searchWhenChanged="true">
-      <label>时间区间</label>
+      <label>Time interval</label>
       <default>
         <earliest>@m</earliest>
         <latest>now</latest>
       </default>
     </input>
     <input type="text" token="source_tok" searchWhenChanged="true">
-      <label>攻击源</label>
+      <label>Attack source</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="target_tok" searchWhenChanged="true">
-      <label>被攻击域名</label>
+      <label>Attacked domain name</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
@@ -35,35 +35,35 @@
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="attack_params_tok" searchWhenChanged="true">
-      <label>攻击参数</label>
+      <label>Attack parameter</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="server_type_tok" searchWhenChanged="true">
-      <label>应用类型</label>
+      <label>App types</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="intercept_state_tok" searchWhenChanged="true">
-      <label>拦截状态</label>
+      <label>Intercept status</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="attack_type_tok" searchWhenChanged="true">
-      <label>攻击类型</label>
+      <label>Attack type</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
       <initialValue>*</initialValue>
     </input>
     <input type="text" token="plugin_name_tok" searchWhenChanged="true">
-      <label>插件名称</label>
+      <label>Plugin name</label>
       <default>*</default>
       <prefix>*</prefix>
       <suffix>*</suffix>
@@ -72,7 +72,7 @@
   </fieldset>
   <row>
     <panel>
-      <title>告警信息</title>
+      <title> Alarm information </title>
       <table>
         <search>
           <query>| search attack_source="$source_tok$"  target="$target_tok$" 
@@ -80,7 +80,7 @@ url="$url_tok$"
 attack_params="$attack_params_tok$" 
 server_type="$server_type_tok$"
 intercept_state="$intercept_state_tok$"
-attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$"  |  eval 攻击时间=strftime(_time, "%Y/%m/%d %H:%M:%S") | table 攻击时间  attack_source target url attack_params server_type intercept_state attack_type plugin_name | rename attack_source as 攻击源 target as 攻击目标 url as URL attack_params as 攻击参数  server_type as 应用类型 intercept_state as 拦截状态 attack_type as 攻击类型 plugin_name as 插件名称</query>
+attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$" | eval attack time = strftime(_time, "%Y/%m/%d %H:%M:%S") | table attack time attack_source target url attack_params Server_type intercept_state attack_type plugin_name | rename attack_source as attack source target as attack target url as URL attack_params as attack parameter server_type as application type intercept_state as intercept status attack_type as attack type plugin_name as plugin name </query>
           <earliest>$time_tok.earliest$</earliest>
           <latest>$time_tok.latest$</latest>
         </search>
@@ -93,7 +93,7 @@ url="$url_tok$"
 attack_params="$attack_params_tok$" 
 server_type="$server_type_tok$"
 intercept_state="$intercept_state_tok$"
-attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$"  |  table _time  attack_source target url attack_params server_type intercept_state attack_type plugin_name | rename attack_source as 攻击源 target as 攻击目标 url as URL attack_params as 攻击参数  server_type as 应用类型 intercept_state as 拦截状态 attack_type as 攻击类型 plugin_name as 插件名称]]>
+attack_type="$attack_type_tok$" plugin_name="$plugin_name_tok$" | table _time attack_source target url attack_params server_type intercept_state attack_type plugin_name | rename attack_source as attack source target as attack target url as URL attack_params as attack parameter server_type as application type intercept_state as intercept status Attack_type as attack type plugin_name as plugin name]]&gt;
           </link>
         </drilldown>
       </table>

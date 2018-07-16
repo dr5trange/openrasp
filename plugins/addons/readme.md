@@ -1,3 +1,3 @@
-# 说明
+# Description
 
-本目录存放的插件，仅作为 **插件开发的DEMO**，并不是用于线上服务器
+The plugin stored in this directory is only used as DEMO** developed by ** plugin, not for online server.

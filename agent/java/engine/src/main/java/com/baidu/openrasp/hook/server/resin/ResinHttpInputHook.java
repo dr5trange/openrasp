@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-2-11.
  *
- * 获取 resin 请求 body 的 hook 点
+ * Get the hook point of the resin request body
  */
 public class ResinHttpInputHook extends ServerInputHook {
 

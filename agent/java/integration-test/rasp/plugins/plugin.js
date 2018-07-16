@@ -7,7 +7,7 @@ var plugin = new RASP('test');
 
 var clean = {
     action: 'ignore',
-    message: '无风险'
+    message: 'no risk'
 };
 
 function checkContext(context, paramInit, hookName) {
@@ -159,4 +159,4 @@ plugin.register('ssrf', function (params, context) {
     }
 });
 
-plugin.log('初始化成功');
+plugin.log ('initial success');

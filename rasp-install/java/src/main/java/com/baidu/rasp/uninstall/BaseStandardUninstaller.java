@@ -26,7 +26,7 @@ import static com.baidu.rasp.RaspError.E10003;
 import static com.baidu.rasp.RaspError.E10002;
 
 /**
- * @Description: 自动卸载基础类
+ * @Description: Automatically uninstall base class
  * @author anyang
  * @date 2018/4/25 19:37
  */
@@ -44,15 +44,15 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
     public void uninstall() throws RaspError, IOException {
         File installDir = new File(getInstallPath(serverRoot));
         BaseStandardInstaller.modifyFolerPermission(installDir.getCanonicalPath());
-        // 删除文件
+        // Delete Files
         delRaspFolder(getInstallPath(serverRoot));
-        // 找到要修改的启动脚本
+        // Find the startup script to modify
         File script = new File(getScript(installDir.getPath()));
         if (!script.exists()) {
             throw new RaspError(E10003 + script.getAbsolutePath());
         }
 
-        // 还原安装时修改的脚本
+        / / Restore the script modified during installation
         System.out.println("Updating startup script\n- " + script.getCanonicalPath());
         String original = BaseStandardInstaller.read(script);
         String modified = recoverStartScript(original);
@@ -75,9 +75,9 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
                 temp.delete();
             }
             if (temp.isDirectory()) {
-                // 先删除文件夹里面的文件
+                / / First delete the files inside the folder
                 delAllFile(path + File.separator + s);
-                // 再删除空文件夹
+                // delete the empty folder again
                 delRaspFolder(path + File.separator + s);
             }
         }
@@ -89,9 +89,9 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
         if (!folder.exists()) {
             throw new RaspError(E10002 + folderPath);
         }
-        // 删除完rasp文件夹里面所有文件和子文件夹
+        // Delete all files and subfolders in the rasp folder
         delAllFile(folderPath);
-        // 删除rasp空文件夹
+        / / Delete rasp empty folder
         folder.delete();
 
     }

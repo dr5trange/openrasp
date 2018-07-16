@@ -21,7 +21,7 @@ For more details visit: https://rasp.baidu.com/doc/install/software.html
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR .'util.php');
 
-//获取将要安装动态库绝对路径(get absolute path of lib to be installed)
+/ / Get the absolute path of lib to be installed
 function get_lib_2b_installed($current_os, $lib_filename)
 {
 	$machine_type_convertion = array(
@@ -60,58 +60,60 @@ $ini_content = <<<OPENRASP
 extension=$lib_filename
 openrasp.root_dir=$root_dir
 	
-;拦截攻击后，跳转到这个URL，并增加 request_id 参数
+After intercepting the attack, jump to this URL and add the request_id parameter
 ;openrasp.block_url=https://rasp.baidu.com/blocked/
 
-;拦截攻击后，将状态码设置为这个值
+After intercepting the attack, set the status code to this value
 ;openrasp.block_status_code=302
 	
-;数组回调函数黑名单，命中即拦截
+; array callback function blacklist, hit intercept
 ;openrasp.callable_blacklists=system,exec,passthru,proc_open,shell_exec,popen,pcntl_exec,assert
 	
-;当服务器不满足安全配置规范，是否禁止服务器启动
+Whether to disable server startup when the server does not meet the security configuration specification
 ;openrasp.enforce_policy=Off
 	
-;hook 点黑名单，逗号分隔
+;hook point blacklist, comma separated
 ;openrasp.hooks_ignore=
 	
-;对于以下URL，修改响应并注入HTML
+; modify the response and inject HTML for the following URL
 ;openrasp.inject_urlprefix=
 	
-;国际化配置
+; international configuration
 ;openrasp.locale=
 	
-;每个进程/线程每秒钟最大日志条数
+; maximum number of logs per second per process/thread
 ;openrasp.log_maxburst=1000
 	
-;当SQL查询结果行数大于或等于该值，则认为是慢查询
+When the number of SQL query result rows is greater than or equal to the value, it is considered a slow query
 ;openrasp.slowquery_min_rows=500
 	
-;报警是否开启 syslog
+Whether the alarm is on syslog
 ;openrasp.syslog_alarm_enable=Off
 	
-;用于 syslog 的 facility
+;facility for syslog
 ;openrasp.syslog_facility=
 	
-;syslog 服务器地址
+;syslog server address
 ;openrasp.syslog_server_address=
 
-;syslog connection timeout(毫秒)
+;syslog connection timeout(millisecond )
+
 ;openrasp.syslog_connection_timeout=50
 	
-;syslog read timeout(毫秒)
+;syslog read timeout(millisecond )
+
 ;openrasp.syslog_read_timeout=10
 
-;syslog重连时间间隔(秒)
+;syslog reconnection interval (seconds)
 ;openrasp.syslog_connection_retry_interval=300
 
-;对于单个请求，JS插件整体超时时间（毫秒）
+; JS plugin overall timeout (milliseconds) for a single request
 ;openrasp.timeout_ms=100
 
-;插件获取堆栈的最大深度
+; the plugin gets the maximum depth of the stack
 ;openrasp.plugin_maxstack=100
 
-;报警日志记录的最大堆栈深度
+; maximum stack depth for alarm logging
 ;openrasp.log_maxstack=10
 	
 ;OPENRASP END
@@ -136,7 +138,7 @@ Options:
 
 HELP;
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 过程化安装 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 $shortopts = "d:h";
 $longopts = array("ignore-ini", "ignore-plugin");
 $options = getopt($shortopts, $longopts);
@@ -149,14 +151,14 @@ if (array_key_exists("d", $options) && !empty($options["d"])) {
 	log_tips(ERROR, "Bad command line arguments. Please use \"-h\" to check help messages.");
 }
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 检察依赖扩展 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 major_tips('Check whether dependent PHP extensions are installed');
 $dep_exts = array('json', 'PDO');
 if (!check_dep_exts_installed($dep_exts)) {
 	log_tips(ERROR, implode(" ",$dep_exts) . " must be installed correctly.");
 }
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 拷贝动态库 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 major_tips('Installing OpenRASP PHP Extension');
 if (!file_exists($extension_dir)) {
 	log_tips(ERROR, "Extension directory '$extension_dir' does not exist");
@@ -178,7 +180,7 @@ if (!copy($lib_source_path, $lib_dest_path)) {
 	log_tips(INFO, "Successfully copied '$lib_filename' to '$extension_dir'");
 }
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 更新ini配置 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 if (extension_loaded('openrasp') && array_key_exists("ignore-ini", $options)) {
 	major_tips("Skipped update of php.ini since '--ignore-ini' is set");
 } else {
@@ -288,7 +290,7 @@ if (extension_loaded('openrasp') && array_key_exists("ignore-ini", $options)) {
 	}
 }
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 初始化工作目录 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
 major_tips('Initializing OpenRASP root folder (openrasp.root_dir)');
 if (file_exists($root_dir)) {
 	if (!chmod($root_dir, 0777)) {

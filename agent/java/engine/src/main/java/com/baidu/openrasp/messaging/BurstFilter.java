@@ -22,7 +22,7 @@ import org.apache.log4j.spi.LoggingEvent;
 
 /**
  * Created by lxk on 17-4-10.
- * 日志限速过滤器
+ * Log speed limit filter
  */
 public class BurstFilter extends Filter {
 
@@ -78,7 +78,7 @@ public class BurstFilter extends Filter {
         }
 
         /**
-         * 消费一个Token
+         * Spending a Token
          *
          * @return
          */
@@ -95,7 +95,7 @@ public class BurstFilter extends Filter {
         }
 
         /**
-         * 重新分配Token
+         * Heavy Distribution Token
          */
         private void refill() {
             long currentTime = System.currentTimeMillis();
@@ -112,8 +112,8 @@ public class BurstFilter extends Filter {
 
     /**
      *
-     * @param event 需进行裁决的loggingEvent
-     * @return 裁决结果
+     * @param event The loggingEvent to be arbitrated
+     * @return ruling result
      */
     public int decide(LoggingEvent event) {
         if (tokenBucket == null) {

@@ -36,7 +36,7 @@ import java.util.Map;
 /**
  * Created by tyy on 17-12-20.
  *
- * 检测 sql 语句的 java 版本
+ * Detect the java version of the sql statement
  */
 public class SqlStatementChecker extends ConfigurableChecker {
 
@@ -62,9 +62,9 @@ public class SqlStatementChecker extends ConfigurableChecker {
         Map<String, String[]> parameterMap = HookHandler.requestCache.get().getParameterMap();
         try {
             JsonObject config = Config.getConfig().getAlgorithmConfig();
-            // 算法1: 匹配用户输入
-            // 1. 简单识别逻辑是否发生改变
-            // 2. 识别数据库管理器
+            // Algorithm 1: Match user input
+            // 1. Simplely identify if the logic has changed
+            // 2. Identify the database manager
             String action = getActionElement(config, CONFIG_KEY_SQLI_USER_INPUT);
             if (!EventInfo.CHECK_ACTION_IGNORE.equals(action) && action != null && parameterMap != null) {
                 for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
@@ -76,7 +76,7 @@ public class SqlStatementChecker extends ConfigurableChecker {
                     if (value.length() == query.length() && value.equals(query)) {
                         String managerAction = getActionElement(config, CONFIG_KEY_DB_MANAGER);
                         if (!EventInfo.CHECK_ACTION_IGNORE.equals(managerAction) && managerAction != null) {
-                            message = "算法2: WebShell - 数据库管理器 - 攻击参数: " + entry.getKey();
+                            message = "Algor 2: WebShell - Database Manager - Attack Parameters: " + entry.getKey();
                             action = managerAction;
                             break;
                         } else {
@@ -89,7 +89,7 @@ public class SqlStatementChecker extends ConfigurableChecker {
                     String[] tokens2 = TokenGenerator.tokenize(query.replace(value, ""), tokenizeErrorListener);
                     if (tokens != null) {
                         if (tokens.length - tokens2.length > 2) {
-                            message = "算法1: 数据库查询逻辑发生改变 - 攻击参数: " + entry.getKey();
+                            message = "Algorithm 1: Database query logic has changed - attack parameters: " + entry.getKey();
                             break;
                         }
                     }
@@ -99,7 +99,7 @@ public class SqlStatementChecker extends ConfigurableChecker {
                 result.add(AttackInfo.createLocalAttackInfo(checkParameter, action,
                         message, 90));
             } else {
-                // 算法2: SQL语句策略检查（模拟SQL防火墙功能）
+                // Algorithm 2: SQL statement policy check (simulated SQL firewall function)
                 action = getActionElement(config, CONFIG_KEY_SQLI_POLICY);
                 if (!EventInfo.CHECK_ACTION_IGNORE.equals(action)) {
                     int i = -1;
@@ -113,7 +113,7 @@ public class SqlStatementChecker extends ConfigurableChecker {
                                         && modules.containsKey(CONFIG_KEY_UNION_NULL)
                                         && modules.get(CONFIG_KEY_UNION_NULL)) {
                                     int nullCount = 0;
-                                    // 寻找连续的逗号、NULL或者数字
+                                    // Find consecutive commas, NULLs, or numbers
                                     for (int j = i + 1; j < tokens.length && j < i + 6; j++) {
                                         if (tokens[j].equals(",") || tokens[j].equals("null") || StringUtils.isNumeric(tokens[j])) {
                                             nullCount++;
@@ -122,10 +122,10 @@ public class SqlStatementChecker extends ConfigurableChecker {
                                         }
                                     }
 
-                                    // NULL,NULL,NULL == 5个token
-                                    // 1,2,3          == 5个token
+                                    // NULL, NULL, NULL == 5 tokens
+                                    // 1, 2, 3 == 5 pieces token
                                     if (nullCount >= 5) {
-                                        message = "UNION-NULL 方式注入 - 字段类型探测";
+                                        message = "UNION-NULL mode injection - field type detection";
                                         break;
                                     }
                                     continue;
@@ -133,17 +133,17 @@ public class SqlStatementChecker extends ConfigurableChecker {
                                 if (lt.equals(";") && i != tokens.length - 1
                                         && modules.containsKey(CONFIG_KEY_STACKED_QUERY)
                                         && modules.get(CONFIG_KEY_STACKED_QUERY)) {
-                                    message = "禁止多语句查询";
+                                    message = "Prohibit multi-statement query";
                                     break;
                                 } else if (lt.startsWith("0x")
                                         && modules.containsKey(CONFIG_KEY_NO_HEX)
                                         && modules.get(CONFIG_KEY_NO_HEX)) {
-                                    message = "禁止16进制字符串";
+                                    message = "Forbidden hexadecimal string";
                                     break;
                                 } else if (lt.startsWith("/*!")
                                         && modules.containsKey(CONFIG_KEY_VERSION_COMMENT)
                                         && modules.get(CONFIG_KEY_VERSION_COMMENT)) {
-                                    message = "禁止MySQL版本号注释";
+                                    message = "Disable MySQL version number comment";
                                     break;
                                 } else if (i > 0 && i < tokens.length - 1 && (lt.equals("xor")
                                         || lt.charAt(0) == '<'
@@ -161,16 +161,16 @@ public class SqlStatementChecker extends ConfigurableChecker {
                                         } catch (Exception e) {
                                             // ignore
                                         }
-                                        message = "禁止常量比较操作: " + op1 + " vs " + op2;
+                                        message = "Disable constant comparison operation: " + op1 + " vs " + op2;
                                         break;
                                     }
                                 } else if (i > 0 && tokens[i].indexOf('(') == 0
                                         && modules.containsKey(CONFIG_KEY_FUNCTION_BLACKLIST)
                                         && modules.get(CONFIG_KEY_FUNCTION_BLACKLIST)) {
-                                    // FIXME: 可绕过，暂时不更新
+                                    // FIXME: Can be bypassed, not updated temporarily
                                     HashMap<String, Boolean> funBlackList = getJsonObjectAsMap(config, CONFIG_KEY_SQLI_POLICY, "function_blacklist");
                                     if (funBlackList.containsKey(tokens[i - 1]) && funBlackList.get(tokens[i - 1])) {
-                                        message = "禁止执行敏感函数: " + tokens[i - 1];
+                                        message = "Prohibit execution of sensitive functions: " + tokens[i - 1];
                                         break;
                                     }
                                 }
@@ -187,7 +187,7 @@ public class SqlStatementChecker extends ConfigurableChecker {
             JSContext.LOGGER.warn("An error occurred while the local sql plugin was detecting, because:" + e.getMessage());
         }
 
-        // js 插件检测
+        // js plugin detection
         List<EventInfo> jsResults = new JsChecker().checkParam(checkParameter);
         if (jsResults != null && jsResults.size() > 0) {
             result.addAll(jsResults);

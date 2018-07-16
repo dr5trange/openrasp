@@ -21,7 +21,7 @@ import com.baidu.openrasp.plugin.checker.AbstractChecker;
 /**
  * Created by tyy on 17-11-14.
  *
- * 用于检测安全基线类型hook点
+ * Used to detect security baseline type hook points
  */
 public abstract class PolicyChecker extends AbstractChecker {
 

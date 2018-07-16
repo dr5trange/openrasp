@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# 手动编译说明
+# Manual compilation instructions
 # https://rasp.baidu.com/doc/hacking/compile/java.html
 
 ##################################
 #                                #
-# 自动编译，并生成OpenRASP安装包 #   
+#Automatically compile and generate OpenRASP installation package#
 #                                #
 ##################################
 
@@ -36,7 +36,7 @@ function buildRaspInstall {
 	rm -rf $BASE_DIR/rasp-install/java/target
 }
 
-# 编译Rasp
+#Compile  Rasp
 function buildRasp {
 	changeDirectory $BASE_DIR/agent/java || exit 1
 	log "mvn clean package"

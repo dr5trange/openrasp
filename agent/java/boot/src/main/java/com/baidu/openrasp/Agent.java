@@ -20,14 +20,14 @@ import java.lang.instrument.Instrumentation;
 
 /**
  * Created by tyy on 3/27/17.
- * 加载agent的入口类，先于主函数加载
+ * Load the entry class of the agent, before the main function load
  */
 public class Agent {
 
     /**
-     * 启动时加载的agent入口方法
+     * Agent entry method loaded at startup
      *
-     * @param agentArg 启动参数
+     * @param agentArg startup parameter
      * @param inst     {@link Instrumentation}
      */
     public static void premain(String agentArg, Instrumentation inst) {

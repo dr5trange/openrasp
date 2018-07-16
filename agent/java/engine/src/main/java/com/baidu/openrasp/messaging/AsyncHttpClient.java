@@ -46,7 +46,7 @@ public class AsyncHttpClient extends HttpClient {
     }
 
     /**
-     * 判断当阻塞队列size小于cpucore数目
+     * Determine when the blocking queue size is less than the cpucore number
      * @return
      */
     public boolean shouldSend() {

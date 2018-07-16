@@ -35,7 +35,7 @@ public class HttpClient {
 
 
     /**
-     * 用于post推送報警的http client
+     * http client for post push alarm
      *
      */
     public HttpClient() {}

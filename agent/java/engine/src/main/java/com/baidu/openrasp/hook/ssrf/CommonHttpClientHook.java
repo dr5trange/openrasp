@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 17-12-7.
  *
- * commons-httpclinet 框架的 http 请求 hook 点
+ *http request hook point for the commons-httpclinet framework
  */
 public class CommonHttpClientHook extends AbstractSSRFHook {
 

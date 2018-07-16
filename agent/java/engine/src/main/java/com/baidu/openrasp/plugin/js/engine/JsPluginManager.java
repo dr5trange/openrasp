@@ -35,11 +35,11 @@ import java.util.TimerTask;
  */
 
 /**
- * PluginManager是一个静态类，封装了插件系统的细节，仅对外层暴露init和check方法
+ * PluginManager is a static class that encapsulates the details of the plugin system and exposes the init and check methods only to the outer layer.
  * <p>
- * PluginManager内部管理插件系统实例，监控检测脚本文件变化
+ * PluginManager internal management plug-in system instance, monitoring detection script file changes
  * <p>
- * 必须首先初始化
+ * Must be initialized first
  */
 public class JsPluginManager {
 
@@ -48,7 +48,7 @@ public class JsPluginManager {
     private static Integer watchId = null;
 
     /**
-     * 初始化插件引擎
+     * Initialize the plugin engine
      *
      * @throws Exception
      */
@@ -68,9 +68,9 @@ public class JsPluginManager {
     }
 
     /**
-     * 初始化检测脚本文件监控
+     * Initialization detection script file monitoring
      * <p>
-     * 不调用则不会在运行时自动更新检测脚本
+     * Do not call, the detection script will not be automatically updated at runtime
      *
      * @throws Exception
      */
@@ -108,16 +108,16 @@ public class JsPluginManager {
     }
 
     /**
-     * 更新插件引擎
+     * Update plugin engine
      * <p>
-     * 检测脚本变化时更新
+     * Update when detecting script changes
      * <p>
-     * 当新插件引擎初始化成功之后再替换旧插件引擎
+     * Replace the old plugin engine after the new plugin engine is successfully initialized
      *
      * @throws Exception
      */
     private synchronized static void updatePlugin() throws Exception {
-        // 清空 algorithm.config 配置
+        / / Clear the algorithm.config configuration
         Config.getConfig().setAlgorithmConfig("{}");
         boolean oldValue = HookHandler.enableHook.getAndSet(false);
         File pluginDir = new File(Config.getConfig().getScriptDirectory());
@@ -144,11 +144,11 @@ public class JsPluginManager {
     }
 
     /**
-     * 异步更新插件引擎
+     * Asynchronous update plugin engine
      * <p>
-     * 可避免文件系统中脚本文件更新时产生的抖动
+     * Avoids jitter generated when script files are updated in the file system
      * <p>
-     * 若产生抖动，可适量增大定时器延时
+     * If there is jitter, increase the timer delay
      */
     private synchronized static void updatePluginAsync() {
         if (timer != null) {

@@ -23,7 +23,7 @@ import com.baidu.openrasp.plugin.info.EventInfo;
 /**
  * Created by tyy on 17-11-22.
  *
- * 攻击检测事件监听器
+ * Attack detection event listener
  */
 public class AttackCheckListener implements CheckEventListener {
     @Override

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-2-8.
  *
- * 服务器请求预处理 hook 点基类
+ * Server request pre-processing hook base class
  */
 public abstract class ServerPreRequestHook extends AbstractClassHook {
 
@@ -53,10 +53,10 @@ public abstract class ServerPreRequestHook extends AbstractClassHook {
     }
 
     /**
-     * hook 方法
+     * hook method
      *
-     * @param ctClass hook 点所在的类
-     * @param src     加入 hook点的代码
+     * @param ctClass hook The class in which the point is located
+     * @param src code to add a hook point
      */
     protected abstract void hookMethod(CtClass ctClass, String src) throws NotFoundException, CannotCompileException;
 

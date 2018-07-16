@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 /**
  * Created by tyy on 17-11-22.
  *
- * hook点检测接口
+ * hook point detection interface
  */
 public interface Checker {
 
@@ -30,10 +30,10 @@ public interface Checker {
     Logger ATTACK_ALARM_LOGGER = Logger.getLogger(AbstractChecker.class.getPackage().getName() + ".alarm");
 
     /**
-     * 检测 hook 点参数
+     * Detect hook parameter
      *
-     * @param parameter hook点参数
-     * @return 是否阻塞 true代表安全 false代表危险
+     * @param parameter hook parameter
+     * @return Whether blocking true means safe false means dangerous
      */
     boolean check(CheckParameter parameter);
 

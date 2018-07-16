@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author anyang
- * @Description:resin自动卸载
+ * @Description:resin is automatically uninstalled
  * @date 2018/4/25 19:36
  *
  */

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-2-8.
  *
- * 服务器请求 hook 点基类
+ * Server request hook point base class
  */
 public abstract class ServerRequestHook extends AbstractClassHook {
 
@@ -43,11 +43,11 @@ public abstract class ServerRequestHook extends AbstractClassHook {
     }
 
     /**
-     * catalina 请求 hook 点检测入口
+     * catalina request hook point detection entry
      *
-     * @param filter   ApplicationFilterChain 实例本身
-     * @param request  请求实体
-     * @param response 响应实体
+     * @param filter ApplicationFilterChain instance itself
+     * @param request request entity
+     * @param response response entity
      */
     public static void checkRequest(Object filter, Object request, Object response) {
         HookHandler.checkFilterRequest(filter, request, response);

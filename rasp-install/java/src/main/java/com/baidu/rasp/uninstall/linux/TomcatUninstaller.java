@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author anyang
- * @Description: tomcat自动卸载
+ * @Description: tomcat auto uninstall
  * @date 2018/4/25 19:34
  */
 public class TomcatUninstaller extends BaseStandardUninstaller {

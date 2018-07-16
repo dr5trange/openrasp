@@ -22,7 +22,7 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 /**
- * 修改rasp相关配置
+ * Modify rasp related configuration
  */
 public class JSRASPConfig extends BaseFunction {
     /**
@@ -48,8 +48,8 @@ public class JSRASPConfig extends BaseFunction {
     }
 
     /**
-     * 提供获取该对象默认值的方法
-     * console.log(thisObj) 即会输出此方法返回的值
+     * Provides a way to get the default value of the object
+     * console.log(thisObj) will output the value returned by this method
      * @see Scriptable#getDefaultValue(Class)
      * @param hint
      * @return

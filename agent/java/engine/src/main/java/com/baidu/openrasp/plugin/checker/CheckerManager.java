@@ -23,7 +23,7 @@ import java.util.EnumMap;
 /**
  * Created by tyy on 17-11-20.
  *
- * 用于管理 hook 点参数的检测
+ * Used to manage the detection of hook point parameters
  */
 public class CheckerManager {
 

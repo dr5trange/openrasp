@@ -67,9 +67,9 @@ public class FileInputStreamHook extends AbstractClassHook {
     }
 
     /**
-     * 文件读取hook点
+     * File read hook point
      *
-     * @param file 文件对象
+     * @param file file object
      */
     public static void checkReadFile(File file) {
         if (file != null) {

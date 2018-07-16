@@ -27,7 +27,7 @@ import java.net.URI;
 /**
  * Created by tyy on 17-12-8.
  *
- * httpclient 框架的请求 http 的 hook 点
+ * httpclient framework request http hook point
  */
 public class HttpClientHook extends AbstractSSRFHook {
 

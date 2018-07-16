@@ -69,9 +69,9 @@ public class FileHook extends AbstractClassHook {
     }
 
     /**
-     * 列出文件列表方法 hook 点检测入口
+     * List file list method hook point detection entry
      *
-     * @param file 文件对象
+     * @param file file object
      */
     public static void checkListFiles(File file) {
         if (file != null) {

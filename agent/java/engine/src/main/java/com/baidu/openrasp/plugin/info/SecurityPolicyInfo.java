@@ -79,21 +79,21 @@ public class SecurityPolicyInfo extends EventInfo {
         info.put("event_time", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(System.currentTimeMillis()));
         // policy id
         info.put("policy_id", this.policy.toString());
-        // 服务器host name
+        // server host name
         info.put("server_hostname", OSUtil.getHostName());
-        // 服务器ip
+        // server ip
         info.put("server_nic", OSUtil.getIpAddress());
-        // 服务器类型
+        // server type
         info.put("server_type", getCatalinaServerType());
-        // 服务器版本
+        // server version
         info.put("server_version", getCatalinaServerVersion());
-        // 安全规范检测信息
+        // Security specification detection information
         info.put("message", message);
-        // 检测参数信息
+        / / Detection parameter information
         if(params !=null){
             info.put("params",params);
         }
-        // 攻击调用栈
+        // attack the call stack
         StackTraceElement[] trace = filter(new Throwable().getStackTrace());
         info.put("stack_trace", stringify(trace));
         return info;

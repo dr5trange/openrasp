@@ -23,7 +23,7 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 /**
- * Java 实现的 token 解析功能，将注册到 JS 中 RASP 对象上
+ * Java implementation of token parsing, will be registered to the RASP object in JS
  */
 public class JSTokenizeSql extends BaseFunction {
     private static TokenizeErrorListener tokenizeErrorListener = new TokenizeErrorListener();
@@ -55,8 +55,8 @@ public class JSTokenizeSql extends BaseFunction {
     }
 
     /**
-     * 提供获取该对象默认值的方法
-     * console.log(thisObj) 即会输出此方法返回的值
+     * Provides a way to get the default value of the object
+     * console.log(thisObj) will output the value returned by this method
      * @see Scriptable#getDefaultValue(Class)
      * @param hint
      * @return

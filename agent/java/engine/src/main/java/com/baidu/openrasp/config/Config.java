@@ -35,8 +35,8 @@ import java.util.Properties;
 
 /**
  * Created by tyy on 3/27/17.
- * 项目配置类，通过解析conf/rasp.property文件来加载配置
- * 若没有找到配置文件使用默认值
+ * Project configuration class, load configuration by parsing conf/rasp.property file
+ * If the configuration file is not found, the default value is used.
  */
 public class Config extends FileScanListener {
 
@@ -116,7 +116,7 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 构造函数，初始化全局配置
+     * constructor, initialize the global configuration
      */
     private Config() {
         this.configFileDir = baseDirectory + File.separator + CONFIG_DIR_NAME;
@@ -142,7 +142,7 @@ public class Config extends FileScanListener {
                 input.close();
             }
         } finally {
-            // 出现解析问题使用默认值
+            // There is a parsing problem with default values
             for (Item item : Item.values()) {
                 if (item.isProperties) {
                     setConfigFromProperties(item, properties, isInit);
@@ -189,7 +189,7 @@ public class Config extends FileScanListener {
         try {
             setConfig(key, value, isInit);
         } catch (Exception e) {
-            // 出现解析问题使用默认值
+            // There is a parsing problem with default values
             value = item.defaultValue;
             setConfig(key, item.defaultValue, false);
             LOGGER.warn("set config " + item.key + " failed, use default value : " + value);
@@ -206,36 +206,36 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取配置单例
+     * Get configuration singleton
      *
-     * @return Config单例对象
+     * @return Config singleton object
      */
     public static Config getConfig() {
         return ConfigHolder.instance;
     }
 
     /**
-     * 获取当前jar包所在目录
+     * Get the directory where the current jar package is located
      *
-     * @return 当前jar包目录
+     * @return current jar package directory
      */
     public String getBaseDirectory() {
         return baseDirectory;
     }
 
     /**
-     * 获取js脚本所在目录
+     * Get the directory where the js script is located
      *
-     * @return js脚本目录
+     * @return js script directory
      */
     public String getScriptDirectory() {
         return baseDirectory + "/plugins";
     }
 
     /**
-     * 获取自定义插入 html 页面的 js 脚本
+     * Get a custom js script to insert html pages
      *
-     * @return js脚本内容
+     * @return js script content
      */
     public String getCustomResponseScript() {
         return CustomResponseHtml.getInstance() != null ? CustomResponseHtml.getInstance().getContent() : null;
@@ -278,21 +278,21 @@ public class Config extends FileScanListener {
         }
     }
 
-    //--------------------可以通过插件修改的配置项-----------------------------------
+    //-------------------- Configuration items that can be modified by the plugin -------------------- --------------
 
     /**
-     * 获取Js引擎执行超时时间
+     * Get Js engine execution timeout
      *
-     * @return 超时时间
+     * @return timeout
      */
     public synchronized long getPluginTimeout() {
         return pluginTimeout;
     }
 
     /**
-     * 配置Js引擎执行超时时间
+     * Configure Js engine execution timeout
      *
-     * @param pluginTimeout 超时时间
+     * @param pluginTimeout timeout
      */
     public synchronized void setPluginTimeout(String pluginTimeout) {
         this.pluginTimeout = Long.parseLong(pluginTimeout);
@@ -302,18 +302,18 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 设置需要插入自定义html的页面path前缀
+     * Set the page path prefix to insert custom html
      *
-     * @return 页面path前缀
+     * @return page path prefix
      */
     public synchronized String getInjectUrlPrefix() {
         return injectUrlPrefix;
     }
 
     /**
-     * 获取需要插入自定义html的页面path前缀
+     * Get the page path prefix that needs to insert custom html
      *
-     * @param injectUrlPrefix 页面path前缀
+     * @param injectUrlPrefix page path prefix
      */
     public synchronized void setInjectUrlPrefix(String injectUrlPrefix) {
         StringBuilder injectPrefix = new StringBuilder(injectUrlPrefix);
@@ -324,16 +324,16 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 保存HTTP请求体时最大保存长度
+     * Maximum save length when saving HTTP request body
      *
-     * @return 最大长度
+     * @return maximum length
      */
     public synchronized int getBodyMaxBytes() {
         return bodyMaxBytes;
     }
 
     /**
-     * 配置保存HTTP请求体时最大保存长度
+     * Configure the maximum save length when saving the HTTP request body
      *
      * @param bodyMaxBytes
      */
@@ -356,16 +356,16 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 需要忽略的挂钩点
+     * Hook points to ignore
      *
-     * @return 需要忽略的挂钩点列表
+     * @return list of hit points to ignore
      */
     public synchronized String[] getIgnoreHooks() {
         return this.ignoreHooks;
     }
 
     /**
-     * 配置需要忽略的挂钩点
+     * Configure hook points to ignore
      *
      * @param ignoreHooks
      */
@@ -374,18 +374,18 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 反射hook点传递给插件栈信息的最大深度
+     * The maximum depth of the information that the reflection hook passes to the plugin stack
      *
-     * @return 栈信息最大深度
+     * @return stack information maximum depth
      */
     public synchronized int getPluginMaxStack() {
         return pluginMaxStack;
     }
 
     /**
-     * 设置反射hook点传递给插件栈信息的最大深度
+     * Set the maximum depth of the reflection hook information passed to the plugin stack information
      *
-     * @param pluginMaxStack 栈信息最大深度
+     * @param pluginMaxStack stack information maximum depth
      */
     public synchronized void setPluginMaxStack(String pluginMaxStack) {
         this.pluginMaxStack = Integer.parseInt(pluginMaxStack);
@@ -395,43 +395,43 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取反射监控的方法
+     * Get the method of reflection monitoring
      *
-     * @return 需要监控的反射方法
+     * @return reflection method that needs to be monitored
      */
     public synchronized String[] getReflectionMonitorMethod() {
         return reflectionMonitorMethod;
     }
 
     /**
-     * 设置反射监控的方法
+     * Set the method of reflection monitoring
      *
-     * @param reflectionMonitorMethod 监控的方法
+     * @param reflectionMonitorMethod Method of monitoring
      */
     public synchronized void setReflectionMonitorMethod(String reflectionMonitorMethod) {
         this.reflectionMonitorMethod = reflectionMonitorMethod.replace(" ", "").split(",");
     }
 
     /**
-     * 获取拦截自定义页面的url
+     * Get the url that intercepts the custom page
      *
-     * @return 拦截页面url
+     * @return intercept page url
      */
     public synchronized String getBlockUrl() {
         return blockUrl;
     }
 
     /**
-     * 设置拦截页面url
+     * Set the intercept page url
      *
-     * @param blockUrl 拦截页面url
+     * @param blockUrl intercept page url
      */
     public synchronized void setBlockUrl(String blockUrl) {
         this.blockUrl = StringUtils.isEmpty(blockUrl) ? Item.BLOCK_URL.defaultValue : blockUrl;
     }
 
     /**
-     * 获取报警日志最大输出栈深度
+     * Get the maximum output stack depth of the alarm log
      *
      * @return
      */
@@ -440,7 +440,7 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 配置报警日志最大输出栈深度
+     * Configure the alarm log maximum output stack depth
      *
      * @param logMaxStackSize
      */
@@ -452,18 +452,18 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取允许传入插件的ognl表达式的最短长度
+     * Get the minimum length of the ognl expression that is allowed to be passed to the plugin
      *
-     * @return ognl表达式最短长度
+     * @return ognl expression minimum length
      */
     public synchronized int getOgnlMinLength() {
         return ognlMinLength;
     }
 
     /**
-     * 配置允许传入插件的ognl表达式的最短长度
+     * Configure the minimum length of the ognl expression that is allowed to be passed to the plugin
      *
-     * @param ognlMinLength ognl表达式最短长度
+     * @param ognlMinLength ognl expression minimum length
      */
     public synchronized void setOgnlMinLength(String ognlMinLength) {
         this.ognlMinLength = Integer.parseInt(ognlMinLength);
@@ -473,27 +473,27 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 是否开启强制安全规范
-     * 如果开启检测有安全风险的情况下将会禁止服务器启动
-     * 如果关闭当有安全风险的情况下通过日志警告
+     * Whether to open mandatory security regulations
+     * If the detection is safe, the server will be disabled.
+     * If you turn off the log warning when there is a security risk
      *
-     * @return true开启，false关闭
+     * @return true on, false off
      */
     public synchronized boolean getEnforcePolicy() {
         return enforcePolicy;
     }
 
     /**
-     * 配置是否开启强制安全规范
+     * Configure whether to enable mandatory security specifications
      *
-     * @return true开启，false关闭
+     * @return true on, false off
      */
     public synchronized void setEnforcePolicy(String enforcePolicy) {
         this.enforcePolicy = Boolean.parseBoolean(enforcePolicy);
     }
 
     /**
-     * 获取读文件需要检测的扩展名正则表达式
+     * Get the extension regular expression that the read file needs to detect
      *
      * @return
      */
@@ -502,7 +502,7 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 设置读文件需要检测的扩展名正则表达式
+     * Set the extension regular expression that the read file needs to detect
      *
      * @param readFileExtensionRegex
      */
@@ -511,18 +511,18 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取拦截状态码
+     * Get the interception status code
      *
-     * @return 状态码
+     * @return status code
      */
     public synchronized int getBlockStatusCode() {
         return blockStatusCode;
     }
 
     /**
-     * 设置拦截状态码
+     * Set the interception status code
      *
-     * @param blockStatusCode 状态码
+     * @param blockStatusCode status code
      */
     public synchronized void setBlockStatusCode(String blockStatusCode) {
         this.blockStatusCode = Integer.parseInt(blockStatusCode);
@@ -532,28 +532,28 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取 debugLevel 级别
-     * 0是关闭，非0开启
+     * Get the debugLevel level
+     * 0 is off, not 0 is on
      *
-     * @return debugLevel 级别
+     * @return debugLevel level
      */
     public synchronized int getDebugLevel() {
         return debugLevel;
     }
 
     /**
-     * 是否开启调试
+     * Whether to turn on debugging
      *
-     * @return true 代表开启
+     * @return true means open
      */
     public synchronized boolean isDebugEnabled() {
         return debugLevel > 0;
     }
 
     /**
-     * 设置 debugLevel 级别
+     * Set the debugLevel level
      *
-     * @param debugLevel debugLevel 级别
+     * @param debugLevel debugLevel level 
      */
     public synchronized void setDebugLevel(String debugLevel) {
         this.debugLevel = Integer.parseInt(debugLevel);
@@ -567,52 +567,52 @@ public class Config extends FileScanListener {
     }
 
     /**
-     * 获取检测算法配置
+     * Get detection algorithm configuration
      *
-     * @return 配置的 json 对象
+     * @return configured json object
      */
     public synchronized JsonObject getAlgorithmConfig() {
         return algorithmConfig;
     }
 
     /**
-     * 设置检测算法配置
+     * Set detection algorithm configuration
      *
-     * @param json 配置内容
+     * @param json configuration content
      */
     public synchronized void setAlgorithmConfig(String json) {
         this.algorithmConfig = new JsonParser().parse(json).getAsJsonObject();
     }
 
     /**
-     * 获取请求参数编码
+     * Get request parameter encoding
      *
-     * @return 请求参数编码
+     * @return request parameter encoding
      */
     public synchronized String getRequestParamEncoding() {
         return requestParamEncoding;
     }
 
     /**
-     * 设置请求参数编码
-     * 当该配置不为空的情况下，将会允许 hook 点（如 request hook 点）能够根据设置的编码先于用户获取参数
-     * （注意：如果设置了该编码，那么所有的请求参数都将按照这个编码解码，如果用户对参数有多种编码，建议不要添加此配置）
-     * 当该配置为空的情况下，只有用户获取了参数之后，才会允许 hook 点获取参数，从而防止乱码问题
+     * Set request parameter encoding
+     * When the configuration is not empty, it will allow the hook point (such as request hook point) to get the parameter before the user according to the set encoding.
+     * (Note: If the encoding is set, all request parameters will be decoded according to this encoding. If the user has multiple encodings for the parameters, it is recommended not to add this configuration)
+     * When the configuration is empty, only the user can obtain the parameters after the parameters are obtained, thus preventing the garbled problem.
      *
-     * @param requestParamEncoding 请求参数编码
+     * @param requestParamEncoding request parameter encoding
      */
     public synchronized void setRequestParamEncoding(String requestParamEncoding) {
         this.requestParamEncoding = requestParamEncoding;
     }
 
-    //--------------------------统一的配置处理------------------------------------
+    //-------------------------- Unified configuration processing ------------------ ------------------
 
     /**
-     * 统一配置接口,通过 js 更改配置的入口
+     * Unified configuration interface, change the configuration entry through js
      *
-     * @param key   配置名
-     * @param value 配置值
-     * @return 是否配置成功
+     * @param key configuration name
+     * @param value configuration value
+     * @return is configured successfully
      */
     public boolean setConfig(String key, String value, boolean isInit) {
         try {
@@ -662,7 +662,7 @@ public class Config extends FileScanListener {
             }
         } catch (Exception e) {
             if (isInit) {
-                // 初始化配置过程中,如果报错需要继续使用默认值执行
+                / / Initial configuration process, if the error needs to continue to use the default value to execute
                 throw new ConfigLoadException(e);
             }
             LOGGER.info("configuration item \"" + key + "\" failed to change to \"" + value + "\"" + " because:" + e.getMessage());

@@ -18,9 +18,9 @@ package com.baidu.openrasp.tool.hook;
 
 /**
  * Created by lxk on 6/11/17.
- * 用于在 hook FileOutputStream的写操作的时候记录文件信息
- * 使用的是FileOutputStream中的一个锁成员变量
- * 在FileOutputStream的写操作的时候记录文件信息的构造函数hook点中使用该对象记录信息
+ * Used to record file information during the write operation of hook FileOutputStream
+ * is using a lock member variable in FileOutputStream
+ * Use the object record information in the constructor hook point of the file information recorded during the write operation of FileOutputStream
  */
 public class CustomLockObject {
     private String info = null;
@@ -32,18 +32,18 @@ public class CustomLockObject {
     }
 
     /**
-     * 获取文件信息
+     * Get file information
      *
-     * @return 文件信息
+     * @return file information
      */
     public String getInfo() {
         return info;
     }
 
     /**
-     * 设置文件信息
+     * Set file information
      *
-     * @param info 文件信息
+     * @param info file information
      */
     public void setInfo(String info) {
         this.info = info;

@@ -22,8 +22,8 @@ import org.mozilla.javascript.annotations.JSFunction;
 
 
 /**
- * JavaScript 环境中的 stdout 对象
- * 提供输出能力
+ * stdout object in JavaScript environment
+ * Provide output capability
  */
 public class JSStdout extends ScriptableObject {
     private static final Logger LOGGER = Logger.getLogger(JSStdout.class.getPackage().getName() + ".log");

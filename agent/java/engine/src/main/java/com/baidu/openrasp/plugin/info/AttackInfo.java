@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * Created by zhuming01 on 7/11/17.
  * All rights reserved
- * 攻击信息类，主要用于报警
+ * Attack information class, mainly used for alarms
  *
  * @see <a href="https://rasp.baidu.com/doc/setup/log/main.html">document</a>
  */
@@ -66,9 +66,9 @@ public class AttackInfo extends EventInfo {
     }
 
     /**
-     * 整理攻击请求的信息
+     * Organize information about attack requests
      *
-     * @return 攻击信息
+     * @return attack information
      */
     @Override
     public Map<String, Object> getInfo() {
@@ -77,53 +77,53 @@ public class AttackInfo extends EventInfo {
         Timestamp createTime = new Timestamp(parameter.getCreateTime());
 
         info.put("event_type", getType());
-        // 攻击时间
+        // attack time
         info.put("event_time", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(createTime));
-        // 服务器host name
+        // server host name
         info.put("server_hostname", OSUtil.getHostName());
-        // 攻击类型
+        // attack type
         info.put("attack_type", parameter.getType().toString());
-        // 攻击参数
+        // attack parameters
         info.put("attack_params", parameter.getParams());
-        // 攻击调用栈
+        // attack the call stack
         StackTraceElement[] trace = filter(new Throwable().getStackTrace());
         info.put("stack_trace", stringify(trace));
-        // 检测插件
+        // Detect plugin
         info.put("plugin_name", this.pluginName);
-        // 插件消息
+        // plugin message
         info.put("plugin_message", this.message);
-        // 插件置信度
+        // plugin confidence
         info.put("plugin_confidence", this.confidence);
-        // 是否拦截
+        // Whether to intercept
         info.put("intercept_state", this.action);
 
         if (request != null) {
-            // 请求ID
+            // request ID
             info.put("request_id", request.getRequestId());
-            // 攻击来源IP
+            // Attack source IP
             info.put("attack_source", request.getRemoteAddr());
-            // 被攻击目标域名
+            // Target domain name being attacked
             info.put("target", request.getServerName());
-            // 被攻击目标IP
+            // attacked target IP
             info.put("server_ip", request.getLocalAddr());
-            // 被攻击目标服务器类型和版本
+            // Target server type and version being attacked
             Map<String, String> serverInfo = request.getServerContext();
             info.put("server_type", serverInfo != null ? serverInfo.get("server") : null);
             info.put("server_version", serverInfo != null ? serverInfo.get("version") : null);
-            // 被攻击URL
+            // Attacked URL
             StringBuffer requestURL = request.getRequestURL();
             String queryString = request.getQueryString();
             info.put("url", requestURL == null ? "" : (queryString != null ? requestURL + "?" + queryString : requestURL));
-            // 请求体
+            // request body
             byte[] requestBody = request.getBody();
             if (requestBody != null) {
                 info.put("body", new String(requestBody));
             }
-            // 被攻击PATH
+            // was attacked PATH
             info.put("path", request.getRequestURI());
-            // 用户代理
+            // User agent
             info.put("user_agent", request.getHeader("User-Agent"));
-            // 攻击的 Referrer 头
+            // The Referrer's Referrer Head
             String referer = request.getHeader("Referer");
             info.put("referer", referer == null ? "" : referer);
         }

@@ -30,7 +30,7 @@ import java.util.HashMap;
 /**
  * Created by tyy on 17-12-21.
  *
- * 检测内容可以通过 json 配置
+ * Detection content can be configured via json
  */
 public abstract class ConfigurableChecker extends AttackChecker {
 

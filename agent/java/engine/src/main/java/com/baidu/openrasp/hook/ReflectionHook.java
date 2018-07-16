@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * Created by tyy on 9/13/17.
- * 反射hook类
+ * Reflection hook class
  */
 public class ReflectionHook extends AbstractClassHook {
 
@@ -71,9 +71,9 @@ public class ReflectionHook extends AbstractClassHook {
     }
 
     /**
-     * 反射hook点检测
+     * Reflective hook detection
      *
-     * @param method 反射调用的方法
+     * @param method
      */
     public static void checkReflection(Object method) {
         if (HookHandler.enableHook.get() && HookHandler.isEnableCurrThreadHook()) {

@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 17-12-25.
  *
- * jetty 下的 request hook 点
+ * request hook point under jetty
  */
 public class JettyRequestHook extends ServerParamHook {
 

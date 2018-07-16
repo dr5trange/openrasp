@@ -33,7 +33,7 @@ import java.util.List;
  */
 
 /**
- * Rhino JSContext 构造工厂类
+ * Rhino JSContext construction factory class
  */
 public class JSContextFactory extends ContextFactory {
     private static final Logger LOGGER = Logger.getLogger(JSContextFactory.class.getPackage().getName() + ".log");
@@ -138,12 +138,12 @@ public class JSContextFactory extends ContextFactory {
     }
 
     /**
-     * 获取当前线程绑定的 Context
-     * 当该方法创建新 Context 时，初始化 global scope 并保存在 Context 的 ThreadLocal 中
-     * 重复调用该方法不会增加 Context 中的引用计数，也不需要调用 Exit 解除绑定和释放
-     * 该方法创建的 Context 与 Thread 同时释放
+     * Get the current thread bound Context
+     * When the method creates a new Context, initialize the global scope and save it in the ThreadLocal of the Context
+     * Repeatedly calling this method does not increment the reference count in the Context, nor does it need to call Exit to unbind and release
+     * The Context created by this method is released at the same time as Thread
      *
-     * @return 与当前线程绑定的 Context
+     * @return Context bound to the current thread
      */
     public static JSContext enterAndInitContext() {
         JSContext cx = (JSContext) JSContext.getCurrentContext();
@@ -182,17 +182,17 @@ public class JSContextFactory extends ContextFactory {
     }
 
     /**
-     * 创建 JSContext 并设置默认值
+     * Create JSContext and set default values
      *
      * @return
      */
     @Override
     protected JSContext makeContext() {
         JSContext cx = new JSContext();
-        // 每10 * 1000 * 1000个指令中断一次，用于检测超时
+        // Every 10 * 1000 * 1000 instructions are interrupted once, used to detect timeouts
         cx.setInstructionObserverThreshold(10 * 1000 * 1000);
         cx.setLanguageVersion(Context.VERSION_ES6);
-        // 使用解释执行
+        // use explain to execute
         cx.setOptimizationLevel(9);
         return cx;
     }
@@ -219,8 +219,8 @@ public class JSContextFactory extends ContextFactory {
     }
 
     /**
-     * 每10 * 1000 * 1000个指令触发一次，用于检测超时
-     * 判断超时后抛出异常终止引擎执行
+     * Trigger every 10 * 1000 * 1000 instructions to detect timeout
+     * Throw an abnormal termination engine execution after judging timeout
      *
      * @param cx
      * @param instructionCount

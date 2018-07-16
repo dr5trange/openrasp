@@ -30,7 +30,7 @@ import java.util.LinkedList;
 /**
  * Created by tyy on 17-12-9.
  *
- * SSRF hook点基类
+ * SSRF hook point base class
  */
 public abstract class AbstractSSRFHook extends AbstractClassHook {
 
@@ -45,11 +45,11 @@ public abstract class AbstractSSRFHook extends AbstractClassHook {
     }
 
     /**
-     * ssrf 检测的入口
+     * ssrf detection entry
      *
-     * @param url      http 请求的 url
-     * @param hostName http 请求的 host
-     * @param function http 请求的方式
+     * @param url http request url
+     * @param hostName http request host
+     * @param function http How to request
      */
     protected static void checkHttpUrl(String url, String hostName, String function) {
         JSContext cx = JSContextFactory.enterAndInitContext();

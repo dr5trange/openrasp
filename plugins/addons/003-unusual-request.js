@@ -1,7 +1,7 @@
 var plugin = new RASP('offical')
 var clean  = {
   action: 'ignore',
-  message: '无风险',
+  message: 'no risk',
   confidence: 0
 }
 
@@ -11,7 +11,7 @@ plugin.register('request', function(params, context) {
   var reason = false
 
   if (! header['accept']) {
-    reason = '缺少 Accept 请求头'
+    reason = 'missing Accept request header'
   } else if (method != 'get' && method != 'post' && method != 'head') {
     reason = method.toUpperCase()
   }
@@ -19,7 +19,7 @@ plugin.register('request', function(params, context) {
   if (reason) {
     return {
       action:     'block',
-      message:    '不常见的请求方式: ' + reason,
+      message: 'Unusual request method: ' + reason,
       confidence: 90
     }
   }
@@ -27,5 +27,5 @@ plugin.register('request', function(params, context) {
   return clean
 })
 
-plugin.log('003-unusual-request 加载完成')
+plugin.log('003-unusual-request load completed')
 

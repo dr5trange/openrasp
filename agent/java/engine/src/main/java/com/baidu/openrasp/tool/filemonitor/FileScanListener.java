@@ -23,15 +23,15 @@ import java.io.File;
 
 /**
  * Created by tyy on 4/18/17.
- * 观察者扫描文件夹触发的文件变化事件的监听器
- * 屏蔽掉了文件夹事件
+ * Listener for the file change event triggered by the observer scan folder
+ * Blocked folder events
  */
 public abstract class FileScanListener implements FileAlterationListener {
 
     /**
-     * 观察者开始观察回调接口
+     * Observers begin to observe the callback interface
      *
-     * @param fileAlterationObserver 观察者对象
+     * @param fileAlterationObserver Observer object
      */
     @Override
     public void onStart(FileAlterationObserver fileAlterationObserver) {
@@ -39,9 +39,9 @@ public abstract class FileScanListener implements FileAlterationListener {
     }
 
     /**
-     * 文件夹创建事件
+     * Folder creation event
      *
-     * @param file 文件夹对象
+     * @param file folder object
      */
     @Override
     public void onDirectoryCreate(File file) {
@@ -49,9 +49,9 @@ public abstract class FileScanListener implements FileAlterationListener {
     }
 
     /**
-     * 文件夹变化事件
+     * Folder change event
      *
-     * @param file 文件夹事件
+     * @param file folder event
      */
     @Override
     public void onDirectoryChange(File file) {
@@ -59,9 +59,9 @@ public abstract class FileScanListener implements FileAlterationListener {
     }
 
     /**
-     * 文件夹删除事件
+     * Folder deletion event
      *
-     * @param file 文件夹对象
+     * @param file folder object
      */
     @Override
     public void onDirectoryDelete(File file) {
@@ -69,30 +69,30 @@ public abstract class FileScanListener implements FileAlterationListener {
     }
 
     /**
-     * 文件创建事件
+     * File creation event
      *
-     * @param file 文件对象
+     * @param file file object
      */
     public abstract void onFileCreate(File file);
 
     /**
-     * 文件变化事件
+     * File change event
      *
-     * @param file 文件对象
+     * @param file file object
      */
     public abstract void onFileChange(File file);
 
     /**
-     * 文件删除事件
+     * File deletion event
      *
-     * @param file 文件对象
+     * @param file file object
      */
     public abstract void onFileDelete(File file);
 
     /**
-     * 观察者结束观察事件
+     * Observer ends the observation event
      *
-     * @param fileAlterationObserver 观察者对象
+     * @param fileAlterationObserver Observer object
      */
     @Override
     public void onStop(FileAlterationObserver fileAlterationObserver) {

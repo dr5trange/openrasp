@@ -5,9 +5,10 @@
 /* eslint-env mocha */
 /* globals Context */
 const expect = require('chai').expect;
-describe('自定义测试', function () {
-    describe('SQL注入测试', function () {
-        it('union 注入', function () {
+describe('custom test', function () {
+    describe('SQL injection test', function () {
+        it('union injection ', function () {
+
             var results = RASP.check('sql', {
                 server: 'mysql',
                 query: `select name, email from users where id = 1002 and 1=2

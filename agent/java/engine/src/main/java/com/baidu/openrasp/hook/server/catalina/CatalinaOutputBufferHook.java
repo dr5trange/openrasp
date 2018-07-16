@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 17-12-11.
  *
- * catalina 输出流关闭 hook 点
+ * catalina output stream closes the hook point
  */
 public class CatalinaOutputBufferHook extends ServerOutputCloseHook {
 

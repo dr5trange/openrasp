@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-2-11.
  *
- * 用于记录用户获取参数的 hook 点
+ * Hook point for recording user acquisition parameters
  */
 public abstract class ServerParamHook extends AbstractClassHook{
 
@@ -53,10 +53,10 @@ public abstract class ServerParamHook extends AbstractClassHook{
     }
 
     /**
-     * hook 方法
+     * hook method
      *
-     * @param ctClass hook 点所在的类
-     * @param src     加入 hook点的代码
+     * @param ctClass hook The class in which the point is located
+     * @param src code to add a hook point
      */
     protected abstract void hookMethod(CtClass ctClass, String src) throws NotFoundException, CannotCompileException;
 }

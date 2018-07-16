@@ -25,7 +25,7 @@ import javassist.NotFoundException;
 /**
  * Created by tyy on 18-2-11.
  *
- * resin 响应关闭 hook 点
+ * resin response closes the hook point
  */
 public class ResinOutputCloseHook extends ServerOutputCloseHook {
 

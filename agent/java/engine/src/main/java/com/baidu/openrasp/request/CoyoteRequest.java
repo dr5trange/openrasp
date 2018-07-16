@@ -25,24 +25,24 @@ import java.util.Map;
 /**
  * Created by zhuming01 on 6/23/17.
  * All rights reserved
- * org.apache.coyote.Request类请求的的格式化接口
+ * Formatted interface requested by the org.apache.coyote.Request class
  */
 public class CoyoteRequest extends AbstractRequest {
 
     /**
-     * 请求实体
+     * Requesting entity
      *
-     * @param request 类型为org.apache.coyote.Request的请求实体
+     * @param request request entity of type org.apache.coyote.Request
      */
     public CoyoteRequest(Object request) {
         super(request);
     }
 
     /**
-     * 把 message bytes 字节类型信息数据转化成字符串类型数据
+     * Convert message bytes byte type information data to string type data
      *
-     * @param messageBytes 字节类型的信息数据
-     * @return 转化之后的字符串类型的信息数据
+     * @param messageBytes Byte type information data
+     * @return Information data of string type after conversion
      */
     private String mb2string(Object messageBytes) {
         return Reflection.invokeStringMethod(messageBytes, "toString", EMPTY_CLASS);
@@ -161,9 +161,9 @@ public class CoyoteRequest extends AbstractRequest {
     }
 
     /**
-     * 获取本服务的端口号
+     * Get the port number of this service
      *
-     * @return 端口号
+     * @return port number
      */
     private String getServerPort() {
         Object port = Reflection.invokeMethod(request, "getServerPort", EMPTY_CLASS);

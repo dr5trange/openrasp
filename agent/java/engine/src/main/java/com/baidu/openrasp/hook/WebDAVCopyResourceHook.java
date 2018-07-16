@@ -67,7 +67,7 @@ public class WebDAVCopyResourceHook extends AbstractClassHook {
     }
 
     /**
-     * 检测WebDAV COPY MOVE
+     * Detect WebDAV COPY MOVE
      *
      * @param webdavServlet
      * @param source

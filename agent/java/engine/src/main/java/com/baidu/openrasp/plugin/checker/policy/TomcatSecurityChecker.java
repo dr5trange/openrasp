@@ -38,7 +38,7 @@ import java.util.List;
 
 /**
  * Created by tyy on 8/8/17.
- * 检测tomcat安全规范的工具类
+ * Tool class for detecting tomcat security specification
  */
 public class TomcatSecurityChecker extends PolicyChecker {
 
@@ -78,7 +78,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
     }
 
     /**
-     * 检测cookie的HttpOnly是否开启
+     * Check if HttpOnly of the cookie is enabled
      */
     private void checkHttpOnlyIsOpen(String tomcatBaseDir, List<EventInfo> infos) {
         File contextFile = new File(tomcatBaseDir + File.separator + "conf/context.xml");
@@ -101,19 +101,19 @@ public class TomcatSecurityChecker extends PolicyChecker {
             }
 
             if (!isHttpOnly) {
-                infos.add(new SecurityPolicyInfo(Type.COOKIE_HTTP_ONLY, "tomcat未在conf/context.xml文件中配置全局httpOnly.", true));
+                infos.add(new SecurityPolicyInfo(Type.COOKIE_HTTP_ONLY, "tomcat does not configure global httpOnly." in the conf/context.xml file, true));
             }
         }
     }
 
     /**
-     * 检测启动用户是否为系统管理员
+     * Check if the startup user is a system administrator
      */
     private void checkStartUser(List<EventInfo> infos) {
         String osName = System.getProperty("os.name").toLowerCase();
         if (osName.startsWith("linux") || osName.startsWith("mac")) {
             if ("root".equals(System.getProperty("user.name"))) {
-                infos.add(new SecurityPolicyInfo(Type.START_USER, "tomcat以root权限启动.", true));
+                infos.add(new SecurityPolicyInfo(Type.START_USER, "tomcat is started with root privileges.", true));
             }
         } else if (osName.startsWith("windows")) {
             try {
@@ -123,7 +123,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
                 if (userGroups != null) {
                     for (String group : userGroups) {
                         if (group.equals(WINDOWS_ADMIN_GROUP_ID)) {
-                            infos.add(new SecurityPolicyInfo(Type.START_USER, "服务器以管理员权限启动.", true));
+                            infos.add(new SecurityPolicyInfo(Type.START_USER, "The server is started with administrator privileges.", true));
                         }
                     }
                 }
@@ -134,7 +134,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
     }
 
     /**
-     * 检测tomcat后台管理员角色密码是否安全
+     * Check if the tomcat background administrator role password is safe
      */
     private void checkManagerPassword(String tomcatBaseDir, List<EventInfo> infos) {
         File userFile = new File(tomcatBaseDir + File.separator + "conf/tomcat-users.xml");
@@ -162,7 +162,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
                                     String userName = user.getAttribute("username");
                                     String password = user.getAttribute("password");
                                     if (weakWords.contains(userName) && weakWords.contains(password)) {
-                                        infos.add(new SecurityPolicyInfo(Type.MANAGER_PASSWORD, "tomcat后台管理角色存在弱用户名和弱密码.", true));
+                                        infos.add(new SecurityPolicyInfo(Type.MANAGER_PASSWORD, "tomcat background management role has weak username and weak password.", true));
                                     }
                                 }
                             }
@@ -201,7 +201,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
                             if (isFoundDefaultClass) {
                                 if (isOpenListingDirectory(servletElement)) {
                                     infos.add(new SecurityPolicyInfo(Type.DIRECTORY_LISTING,
-                                            "tomcat 开启了 DefaultServlet 的 Directory Listing 功能", true));
+                                            "tomcat opens the Directory Listing function of the DefaultServlet", true));
                                     return;
                                 }
                             }
@@ -238,10 +238,10 @@ public class TomcatSecurityChecker extends PolicyChecker {
     }
 
     /**
-     * 获取xml文档根元素
+     * Get the xml document root element
      *
-     * @param xmlFile 待解析的xml文件
-     * @return xml根节点
+     * @param xmlFile xml file to be parsed
+     * @return xml root node
      */
     private Element getXmlFileRootElement(File xmlFile) {
         try {
@@ -257,7 +257,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
 
 
     /**
-     * 检测是否删除了默认安装的app
+     * Check if the app installed by default is deleted
      */
     private void checkDefaultApp(String tomcatBaseDir, List<EventInfo> infos) {
         LinkedList<String> apps = new LinkedList<String>();
@@ -269,7 +269,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
         }
 
         if (!apps.isEmpty()) {
-            StringBuilder message = new StringBuilder("tomcat 默认安装的webapps没有卸载: ");
+            StringBuilder message = new StringBuilder("tomcat default installed webapps are not uninstalled: ");
             for (String app : apps) {
                 message.append(app).append(", ");
             }

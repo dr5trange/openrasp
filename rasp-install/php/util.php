@@ -20,7 +20,7 @@ const FOUND 		= 1;
 const FINSH 		= 2;
 
 
-//获取linux发行版本
+/ / Get the Linux distribution
 function get_linux_release_name() {
 	if (file_exists("/etc/debian_version")) {
 		return LINUX_UBUNTU;
@@ -31,7 +31,7 @@ function get_linux_release_name() {
 	}
 }
 
-//获取操作系统
+/ / Get the operating system
 function get_OS() {
 	if (stristr(PHP_OS, 'DAR')) {
 		return OS_OSX;
@@ -44,7 +44,7 @@ function get_OS() {
 	}
 }
 
-//获取 ini_scanned_path
+/ / Get ini_scanned_path
 function get_ini_scanned_path() {
 	$ini_scanned_files = php_ini_scanned_files();
 	if ($ini_scanned_files) {
@@ -124,7 +124,7 @@ function recurse_copy($src,$dst) {
     closedir($dir); 
 } 
 
-//安装流程展示
+/ / Installation process display
 function major_tips($message, $done = FALSE) {
 	global $index;
 	echo <<<MSG
@@ -139,7 +139,7 @@ MSG;
 	}
 }
 
-//日志
+//log
 function log_tips($level, $msg, $arr = null) {
 	echo '['.$level."]: ".$msg.PHP_EOL;
 	if (!empty($arr) && is_array($arr)) {
@@ -152,13 +152,13 @@ function log_tips($level, $msg, $arr = null) {
 	}
 }
 
-//帮助
+//help
 function show_help($help_msg) {
 	echo $help_msg;
 	exit(0); 
 }
 
-//通用全局变量
+//General global variables
 $index 				= 1;
 $root_dir 			= null;
 $current_os 		= get_OS();

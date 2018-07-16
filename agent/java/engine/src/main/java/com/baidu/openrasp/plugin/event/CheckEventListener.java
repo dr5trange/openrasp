@@ -21,7 +21,7 @@ import com.baidu.openrasp.plugin.info.EventInfo;
 /**
  * Created by tyy on 17-11-21.
  *
- * 监听插件检测事件
+ * Listener plugin detection event
  */
 public interface CheckEventListener {
 

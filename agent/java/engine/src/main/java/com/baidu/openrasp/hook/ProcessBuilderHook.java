@@ -107,9 +107,9 @@ public class ProcessBuilderHook extends AbstractClassHook {
     }
 
     /**
-     * 命令执行hook点
+     * Command execution hook point
      *
-     * @param command 命令列表
+     * @param command command list
      */
     public static void checkCommand(List<String> command) {
         if (command != null && !command.isEmpty()) {

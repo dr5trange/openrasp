@@ -14,13 +14,13 @@ let cli = new CLIEngine({
     useEslintrc: false
 });
 
-describe('插件代码检查', function () {
+describe('plugin code check', function () {
     before(function () {
         this.filename = program.args[0];
         this.filepath = path.resolve(process.cwd(), this.filename);
     });
 
-    it('代码规范', function () {
+    it('code specification', function () {
         this.slow(500);
         let report = cli.executeOnFiles([this.filepath]);
         let formatter = cli.getFormatter();
@@ -34,7 +34,7 @@ describe('插件代码检查', function () {
         }
     });
 
-    it('模拟环境', function () {
+    it('simulation  environment', function () {
         let sandbox = {console};
         sandbox.global = sandbox;
         vm.createContext(sandbox);

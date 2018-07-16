@@ -79,10 +79,10 @@ public class SQLDriverManagerHook extends AbstractClassHook {
     }
 
     /**
-     * 进入数据库连接函数调用的检测入口
+     * Enter the detection entry of the database connection function call
      *
-     * @param url        连接url
-     * @param properties 连接属性
+     * @param url connection url
+     * @param properties connection properties
      */
     public static void checkSqlConnectionOnEnter(String url, Properties properties) {
         if (Config.getConfig().getEnforcePolicy()) {
@@ -92,10 +92,10 @@ public class SQLDriverManagerHook extends AbstractClassHook {
     }
 
     /**
-     * 检测sql连接规范
+     * Detect sql connection specification
      *
-     * @param url        连接url
-     * @param properties 连接属性
+     * @param url connection url
+     * @param properties connection properties
      */
     public static void checkSqlConnectionOnExit(String url, Properties properties) {
         if (!Config.getConfig().getEnforcePolicy()) {
@@ -107,17 +107,17 @@ public class SQLDriverManagerHook extends AbstractClassHook {
     }
 
     /**
-     * 关闭对 hook 点检测的屏蔽
+     * Turn off blocking of hook detection
      */
     public static void onConnectionExit() {
         HookHandler.postShieldHook();
     }
 
     /**
-     * 退出数据库连接函数调用的检测入口
+     * Exit the detection entry of the database connection function call
      *
-     * @param url        连接url
-     * @param properties 连接属性
+     * @param url connection url
+     * @param properties connection properties
      */
     public static void checkSqlConnection(String url, Properties properties) {
         HashMap<String, Object> params = new HashMap<String, Object>(4);

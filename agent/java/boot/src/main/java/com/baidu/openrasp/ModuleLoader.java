@@ -28,7 +28,7 @@ import java.util.jar.JarFile;
 /**
  * Created by tyy on 18-1-23.
  *
- * 用于加载和初始化引擎模块
+ * Used to load and initialize engine modules
  */
 public class ModuleLoader {
 
@@ -41,10 +41,10 @@ public class ModuleLoader {
     public static ClassLoader moduleClassLoader;
 
 
-    // ModuleLoader 为 classloader加载的，不能通过getProtectionDomain()的方法获得JAR路径
+    // ModuleLoader is loaded for classloader. JAR path cannot be obtained by getProtectionDomain() method.
     static {
         Class clazz = ModuleLoader.class;
-        // path值示例：　file:/opt/apache-tomcat-xxx/rasp/rasp.jar!/com/fuxi/javaagent/Agent.class
+        // path value example: file:/opt/apache-tomcat-xxx/rasp/rasp.jar!/com/fuxi/javaagent/Agent.class
         String path = clazz.getResource("/" + clazz.getName().replace(".", "/") + ".class").getPath();
         if (path.startsWith("file:")) {
             path = path.substring(5);
@@ -66,9 +66,9 @@ public class ModuleLoader {
     }
 
     /**
-     * 构造所有模块
+     * Construct all modules
      *
-     * @param agentArg premain 传入的命令行参数
+     * @param agentArg premain Incoming command line arguments
      * @param inst     {@link java.lang.instrument.Instrumentation}
      */
     private ModuleLoader(String agentArg, Instrumentation inst) throws Exception {
@@ -107,9 +107,9 @@ public class ModuleLoader {
     }
 
     /**
-     * 加载所有 RASP 模块
+     * Load all RASP modules
      *
-     * @param agentArg premain 传入的命令行参数
+     * @param agentArg premain Incoming command line arguments
      * @param inst     {@link java.lang.instrument.Instrumentation}
      */
     public static synchronized void load(String agentArg, Instrumentation inst) throws Exception {

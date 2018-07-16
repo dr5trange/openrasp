@@ -35,7 +35,7 @@ import java.util.jar.Manifest;
 /**
  * Created by tyy on 18-1-24.
  *
- * OpenRasp 引擎启动类
+ * OpenRasp engine startup class
  */
 public class EngineBoot implements Module {
 
@@ -56,7 +56,7 @@ public class EngineBoot implements Module {
             return;
         }
         readVersion();
-        // 初始化插件系统
+        // Initialize the plugin system
         JsPluginManager.init();
         CheckerManager.init();
         initTransformer(inst);
@@ -74,9 +74,9 @@ public class EngineBoot implements Module {
     }
 
     /**
-     * 初始化配置
+     * Initial configuration
      *
-     * @return 配置是否成功
+     * @return Configuration is successful
      */
     private static boolean loadConfig(String baseDir) throws IOException {
         LogConfig.completeLogConfig(baseDir);
@@ -85,9 +85,9 @@ public class EngineBoot implements Module {
     }
 
     /**
-     * 初始化类字节码的转换器
+     * Initialize class bytecode converter
      *
-     * @param inst 用于管理字节码转换器
+     * @param inst for managing bytecode converters
      */
     private static void initTransformer(Instrumentation inst) throws UnmodifiableClassException {
         LinkedList<Class> retransformClasses = new LinkedList<Class>();
@@ -103,7 +103,7 @@ public class EngineBoot implements Module {
                 }
             }
         }
-        // hook已经加载的类
+        / / hook has been loaded class
         Class[] classes = new Class[retransformClasses.size()];
         retransformClasses.toArray(classes);
         if (classes.length > 0) {

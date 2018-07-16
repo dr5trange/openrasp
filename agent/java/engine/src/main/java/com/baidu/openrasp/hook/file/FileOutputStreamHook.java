@@ -33,7 +33,7 @@ import java.io.IOException;
 /**
  * Created by lxk on 6/8/17.
  *
- * 文件输出流 hook 点
+ * File output stream hook point
  */
 public class FileOutputStreamHook extends AbstractClassHook {
     /**
@@ -69,7 +69,7 @@ public class FileOutputStreamHook extends AbstractClassHook {
     }
 
     /**
-     * 写文件hook点
+     * Write file hook point
      *
      * @param file
      */

@@ -153,9 +153,9 @@ public class SQLStatementHook extends AbstractSqlHook {
     }
 
     /**
-     * SQL语句检测
+     * SQL statement detection
      *
-     * @param stmt sql语句
+     * @param stmt sql statement
      */
     public static void checkSQL(String server, Object statement, String stmt) {
         if (stmt != null && !stmt.isEmpty()) {

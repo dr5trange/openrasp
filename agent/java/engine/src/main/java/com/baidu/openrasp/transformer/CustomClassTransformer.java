@@ -46,7 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * 自定义类字节码转换器，用于hook类德 方法
+ * Custom class bytecode converter for hook class method
  */
 public class CustomClassTransformer implements ClassFileTransformer {
     private static final Logger LOGGER = Logger.getLogger(CustomClassTransformer.class.getName());
@@ -107,7 +107,7 @@ public class CustomClassTransformer implements ClassFileTransformer {
     }
 
     /**
-     * 过滤需要hook的类，进行字节码更改
+     * Filter classes that require hooks for bytecode changes
      *
      * @see ClassFileTransformer#transform(ClassLoader, String, Class, ProtectionDomain, byte[])
      */

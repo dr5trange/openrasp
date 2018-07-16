@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 9/21/17.
  *
- * 自定义向返回页面中插入的内容
+ * Customize the content inserted into the return page
  */
 public class CustomResponseHtml extends FileScanListener {
 
@@ -43,10 +43,10 @@ public class CustomResponseHtml extends FileScanListener {
     private String content;
 
     /**
-     * 加载自定义要插入 html 页面的 js 检测脚本脚本
-     * 监控自定义文件的更新
+     * Load custom js detection script script to insert html page
+     * Monitor updates to custom files
      *
-     * @param basePath 安装目录
+     * @param basePath installation directory
      */
     public static synchronized void load(String basePath) {
         File file = new File(basePath + File.separator + CUSTOM_RESPONSE_BASE_DIR +
@@ -79,7 +79,7 @@ public class CustomResponseHtml extends FileScanListener {
     /**
      * constructor
      *
-     * @param content 自定义页面内容
+     * @param content custom page content
      */
     private CustomResponseHtml(String content) {
         File assetsDir = new File(Config.getConfig().getBaseDirectory() + File.separator
@@ -91,27 +91,27 @@ public class CustomResponseHtml extends FileScanListener {
     }
 
     /**
-     * 获取单例
+     * Get a singleton
      *
-     * @return 单例
+     * @return singleton
      */
     public static CustomResponseHtml getInstance() {
         return instance;
     }
 
     /**
-     * 获取自定义脚本内容
+     * Get custom script content
      *
-     * @return 脚本内容
+     * @return script content
      */
     public synchronized String getContent() {
         return content;
     }
 
     /**
-     * 设置自定义HTML注入
+     * Set custom HTML injection
      *
-     * @param content html注入内容
+     * @param content html injection content
      */
     public synchronized void setContent(String content) {
         this.content = content;
@@ -119,8 +119,8 @@ public class CustomResponseHtml extends FileScanListener {
     }
 
     /**
-     * 通过文件设置自定义js脚本
-     * 如果文件存在设置为文件内容,如果文件不存在脚本内容设置为空字符串
+     * Set custom js scripts via file
+     * If the file exists set to the file content, if the file does not exist, the script content is set to an empty string
      *
      * @param file
      */

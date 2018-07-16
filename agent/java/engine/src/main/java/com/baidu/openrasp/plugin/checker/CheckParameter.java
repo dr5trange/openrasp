@@ -31,14 +31,14 @@ import java.util.Map;
 
 /**
  * Created by tyy on 3/31/17.
- * 用于转化hook参数和filter所需要的参数
+ * Parameters needed to convert hook parameters and filters
  */
 public class CheckParameter {
 
     public static final HashMap<String, Object> EMPTY_MAP = new HashMap<String, Object>();
 
     public enum Type {
-        // js插件检测
+        // js plugin detection
         SQL("sql", new SqlStatementChecker()),
         COMMAND("command", new JsChecker()),
         DIRECTORY("directory", new JsChecker()),
@@ -54,10 +54,10 @@ public class CheckParameter {
         INCLUDE("include", new JsChecker()),
         SSRF("ssrf", new SSRFChecker()),
 
-        // java本地检测
+        // java local detection
         SQL_SLOW_QUERY("sqlSlowQuery", new SqlResultChecker(false)),
 
-        // 安全基线检测
+        // Security baseline detection
         POLICY_SQL_CONNECTION("sqlConnection", new SqlConnectionChecker()),
         POLICY_TOMCAT_START("tomcatStart", new TomcatSecurityChecker());
 

@@ -28,7 +28,7 @@ import java.net.URLConnection;
 /**
  * Created by tyy on 17-12-7.
  *
- * jdk 中进行 http 请求的 hook 点
+ * hook point for http request in jdk
  */
 public class URLConnectionHook extends AbstractSSRFHook {
 

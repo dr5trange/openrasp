@@ -74,7 +74,7 @@ public class TomcatInstaller extends BaseStandardInstaller {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
 
-            // 插入点: [ $1 = "start" ] 或者 [ $1 = "run" ]
+            // Insertion point: [ $1 = "start" ] or [ $1 = "run" ]
             if (! line.startsWith("#") && (line.contains("\"$1\" = \"start\"") || line.contains("\"$1\" = \"run\""))) {
                 modifyConfigState = FOUND;
                 sb.append(line).append("\n");
@@ -82,7 +82,7 @@ public class TomcatInstaller extends BaseStandardInstaller {
                 continue;
             }
 
-            // 删除已经存在的配置项
+            // Delete existing configuration items
             if (OPENRASP_REGEX.matcher(line).matches()) {
                 continue;
             }

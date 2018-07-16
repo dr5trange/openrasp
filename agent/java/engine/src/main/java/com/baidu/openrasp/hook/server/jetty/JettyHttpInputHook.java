@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 9/25/17.
  *
- * 获取 jetty 请求 body 的 hook 点
+ * Get the hook point of the jetty request body
  */
 public class JettyHttpInputHook extends ServerInputHook {
 

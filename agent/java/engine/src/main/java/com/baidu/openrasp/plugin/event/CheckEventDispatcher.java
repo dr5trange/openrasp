@@ -23,7 +23,7 @@ import java.util.LinkedList;
 /**
  * Created by tyy on 17-11-21.
  *
- * 插件事件派发
+ * Plugin event dispatch
  */
 public class CheckEventDispatcher implements CheckEventListener {
 

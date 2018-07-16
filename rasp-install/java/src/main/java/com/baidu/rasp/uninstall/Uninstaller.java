@@ -22,7 +22,7 @@ import java.io.IOException;
 
 /**
  * @author anyang
- * @Description: 自动卸载接口
+ * @Description: Automatically uninstall the interface
  * @date 2018/4/25 19:37
  */
 public interface Uninstaller {

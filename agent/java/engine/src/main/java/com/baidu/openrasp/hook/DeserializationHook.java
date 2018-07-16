@@ -30,7 +30,7 @@ import java.io.ObjectStreamClass;
 
 /**
  * Created by tyy on 6/21/17.
- * 反序列化漏洞检测hook
+ * Deserialization vulnerability detection hook
  */
 public class DeserializationHook extends AbstractClassHook {
     /**
@@ -66,9 +66,9 @@ public class DeserializationHook extends AbstractClassHook {
     }
 
     /**
-     * 反序列化监检测点
+     * Deserialization monitoring points
      *
-     * @param objectStreamClass 反序列化的类的流对象
+     * @param objectStreamClass The stream object of the deserialized class
      */
     public static void checkDeserializationClass(ObjectStreamClass objectStreamClass) {
         if (objectStreamClass != null) {

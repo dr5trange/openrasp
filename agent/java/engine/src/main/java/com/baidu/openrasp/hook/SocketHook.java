@@ -32,7 +32,7 @@ import java.net.SocketAddress;
 
 /**
  * Created by tyy on 17-11-17.
- * 检测socket连接的hook点
+ * Detect hook points for socket connections
  */
 public class SocketHook extends AbstractClassHook {
 
@@ -69,9 +69,9 @@ public class SocketHook extends AbstractClassHook {
     }
 
     /**
-     * 检测socket连接的host
+     * Detect socket for socket connection
      *
-     * @param address socket连接地址
+     * @param address socket connection address
      */
     public static void checkSocketHost(SocketAddress address) {
         try {

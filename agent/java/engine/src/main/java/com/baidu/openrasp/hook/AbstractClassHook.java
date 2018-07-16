@@ -30,8 +30,8 @@ import java.util.LinkedList;
  * Created by zhuming01 on 5/19/17.
  * All rights reserved
  *
- * 用于向固定类的固定方法加钩子的类
- * 不同的hook点根据自己的需求实现该抽象类
+ * Classes used to hook hooks to fixed methods of fixed classes
+ * Different hook points implement the abstract class according to their own needs
  */
 public abstract class AbstractClassHook {
 
@@ -42,33 +42,33 @@ public abstract class AbstractClassHook {
     private boolean isLoadedByBootstrapLoader = false;
 
     /**
-     * 用于判断类名与当前需要hook的类是否相同
+     * Used to determine whether the class name is the same as the class that currently needs the hook
      *
-     * @param className 用于匹配的类名
-     * @return 是否匹配
+     * @param className class name to use for matching
+     * @return matches
      */
     public abstract boolean isClassMatched(String className);
 
     /**
-     * hook点所属检测类型．
+     * The type of detection that the hook point belongs to.
      *
-     * @return 检测类型
+     * @return detection type
      * @see <a href="https://rasp.baidu.com/doc/dev/data.html">https://rasp.baidu.com/doc/dev/data.html</a>
      */
     public abstract String getType();
 
     /**
-     * hook 目标类的函数
+     * hook function of the target class
      *
-     * @param ctClass 目标类
+     * @param ctClass target class
      */
     protected abstract void hookMethod(CtClass ctClass) throws IOException, CannotCompileException, NotFoundException;
 
     /**
-     * 转化目标类
+     * Conversion target class
      *
-     * @param ctClass 待转化的类
-     * @return 转化之后类的字节码数组
+     * @param ctClass class to be converted
+     * @return bytecode array of the class after conversion
      */
     public byte[] transformClass(CtClass ctClass) {
         try {
@@ -83,39 +83,39 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 是否可以在 hook.ignore 配置项中被忽略
+     * Can it be ignored in the hook.ignore configuration item
      *
-     * @return hook 点是否可别忽略
+     * @return hook points can not be ignored
      */
     public boolean couldIgnore() {
         return couldIgnore;
     }
 
     /**
-     * hook 点所在的类是否被 BootstrapClassLoader 加载
+     * Whether the class where the hook point is loaded by BootstrapClassLoader
      *
-     * @return true 代表是
+     * @return true means yes
      */
     public boolean isLoadedByBootstrapLoader() {
         return isLoadedByBootstrapLoader;
     }
 
     /**
-     * 设置 hook 点所在的类是否被 BootstrapClassLoader 加载
+     * Set whether the class of the hook point is loaded by BootstrapClassLoader
      *
-     * @param loadedByBootstrapLoader true 代表是
+     * @param loadedByBootstrapLoader true means yes
      */
     public void setLoadedByBootstrapLoader(boolean loadedByBootstrapLoader) {
         isLoadedByBootstrapLoader = loadedByBootstrapLoader;
     }
 
     /**
-     * 在目标类的目标方法的入口插入相应的源代码
+     * Insert the appropriate source code at the entry of the target method of the target class
      *
-     * @param ctClass    目标类
-     * @param methodName 目标方法名称
-     * @param desc       目标方法的描述符号
-     * @param src        待插入的源代码
+     * @param ctClass target class
+     * @param methodName target method name
+     * @param desc description of the target method
+     * @param src source code to be inserted
      */
     public void insertBefore(CtClass ctClass, String methodName, String desc, String src)
             throws NotFoundException, CannotCompileException {
@@ -136,12 +136,12 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 在目标类的一组重载的目标方法的入口插入相应的源代码
+     * Insert the appropriate source code at the entry of a set of overloaded target methods of the target class
      *
-     * @param ctClass    目标类
-     * @param methodName 目标方法名称
-     * @param allDesc    目标方法的一组描述符
-     * @param src        待插入的源代码
+     * @param ctClass target class
+     * @param methodName target method name
+     * @param allDesc A set of descriptors for the target method
+     * @param src source code to be inserted
      */
     public void insertBefore(CtClass ctClass, String methodName, String src, String[] allDesc)
             throws NotFoundException, CannotCompileException {
@@ -151,13 +151,13 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 在目标类的目标方法的出口插入相应的源代码
+     * Insert the appropriate source code at the exit of the target method of the target class
      *
-     * @param ctClass    目标类
-     * @param methodName 目标方法名称
-     * @param desc       目标方法的描述符号
-     * @param src        待插入的源代码
-     * @param asFinally  是否在抛出异常的时候同样执行该源代码
+     * @param ctClass target class
+     * @param methodName target method name
+     * @param desc description of the target method
+     * @param src source code to be inserted
+     * @param asFinally Whether to execute the source code when an exception is thrown
      */
     public void insertAfter(CtClass ctClass, String methodName, String desc, String src, boolean asFinally)
             throws NotFoundException, CannotCompileException {
@@ -192,13 +192,13 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 获取特定类的方法实例
-     * 如果描述符为空，那么返回所有同名的方法
+     * Get a method instance of a specific class
+     * If the descriptor is empty, then return all methods with the same name
      *
-     * @param ctClass    javassist 类实例
-     * @param methodName 方法名称
-     * @param desc       方法描述符
-     * @return 所有符合要求的方法实例
+     * @param ctClass javassist class instance
+     * @param methodName method name
+     * @param desc method descriptor
+     * @return All method instances that meet the requirements
      * @see javassist.bytecode.Descriptor
      */
     private LinkedList<CtBehavior> getMethod(CtClass ctClass, String methodName, String desc) {
@@ -228,10 +228,10 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 在目标类的目标方法的入口插入相应的源代码
+     * Insert the appropriate source code at the entry of the target method of the target class
      *
-     * @param method 目标方法
-     * @param src    源代码
+     * @param method target method
+     * @param src source code
      */
     public void insertBefore(CtBehavior method, String src) throws CannotCompileException {
         try {
@@ -256,11 +256,11 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 在目标类的目标方法的出口插入相应的源代码
+     * Insert the appropriate source code at the exit of the target method of the target class
      *
-     * @param method    目标方法
-     * @param src       源代码
-     * @param asFinally 是否在抛出异常的时候同样执行该源代码
+     * @param method target method
+     * @param src source code
+     * @param asFinally Whether to execute the source code when an exception is thrown
      */
     public void insertAfter(CtBehavior method, String src, boolean asFinally) throws CannotCompileException {
         try {
@@ -273,12 +273,12 @@ public abstract class AbstractClassHook {
     }
 
     /**
-     * 获取调用静态方法的代码字符串
+     * Get the code string that calls the static method
      *
-     * @param invokeClass 静态方法所属的类
-     * @param methodName  静态方法名称
-     * @param paramString 调用传入的参数字符串,按照javassist格式
-     * @return 整合之后的代码
+     * @param invokeClass The class to which the static method belongs
+     * @param methodName static method name
+     * @param paramString calls the passed argument string, in javassist format
+     * @return code after integration
      */
     public String getInvokeStaticSrc(Class invokeClass, String methodName, String paramString, Class... parameterTypes) {
         String src;

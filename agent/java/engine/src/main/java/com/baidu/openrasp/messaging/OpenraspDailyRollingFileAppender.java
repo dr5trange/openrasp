@@ -31,8 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /*
- * 在DailyRollingFileAppender基础上增加MaxBackupIndex配置,
- * 仅在rollover时删除最近的超过时间范围的文件(一个)
+ * Add MaxBackupIndex configuration based on DailyRollingFileAppender,
+ * Delete the most recent time range file only when rolling over (one)
  */
 public class OpenraspDailyRollingFileAppender extends FileAppender {
 
@@ -47,9 +47,9 @@ public class OpenraspDailyRollingFileAppender extends FileAppender {
     static final int TOP_OF_MONTH  = 5;
 
     /**
-     * 最大日志文件备份数目,需大于等于0
-     * 0代表不备份
-     * 不合法数值用默认值替代
+     * The maximum number of log file backups, which must be greater than or equal to 0
+     * 0 means no backup
+     * Unlawful values ​​are replaced with default values
      */
     private int maxBackupIndex = 30;
 

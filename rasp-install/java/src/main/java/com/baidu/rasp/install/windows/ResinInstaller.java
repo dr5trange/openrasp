@@ -28,10 +28,13 @@ import java.util.regex.Pattern;
 import static com.baidu.rasp.RaspError.E10001;
 
 /**
-　　* @Description: resin自动安装
-　　* @author anyang
-　　* @date 2018/4/25 19:31
-　　*/
+* @Description: resin is automatically installed
+* @author anyang
+
+* @date 2018/4/25 19:31
+
+*/
+
 public class ResinInstaller extends BaseStandardInstaller {
 
     private static Pattern OPENRASP_REGEX_WINDOWS = Pattern.compile(".*(\\s*OPENRASP\\s*|\\s*<jvm-arg>.*\\\\rasp\\\\).*");

@@ -1,4 +1,4 @@
-# RaspInstall 源代码
+# RaspInstall Source Code
 
-自动安装包错误代码请参考: [自动安装失败](https://rasp.baidu.com/doc/install/software.html#faq-1)
+For the automatic installation package error code, please refer to: [Automatic installation failed] (https://rasp.baidu.com/doc/install/software.html#faq-1)
 

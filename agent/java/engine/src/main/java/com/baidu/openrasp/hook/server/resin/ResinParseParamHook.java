@@ -25,7 +25,7 @@ import javassist.NotFoundException;
 /**
  * Created by tyy on 18-2-11.
  *
- * resin 解析参数的 hook 点
+ * resin The hook point of the parsing parameter
  */
 public class ResinParseParamHook extends ServerParamHook {
 

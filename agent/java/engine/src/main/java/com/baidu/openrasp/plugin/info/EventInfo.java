@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * 报警事件信息类
+ * Alarm event information class
  */
 public abstract class EventInfo {
 
@@ -58,7 +58,7 @@ public abstract class EventInfo {
 
     protected StackTraceElement[] filter(StackTraceElement[] trace) {
         int i = 0;
-        // 去除插件本身调用栈
+        / / Remove the plugin itself call stack
         while (trace[i].getClassName().startsWith("com.baidu.openrasp") && i < trace.length) {
             i++;
         }

@@ -22,7 +22,7 @@ import com.baidu.openrasp.tool.Reflection;
 
 /**
  * Created by tyy on 9/5/17.
- * javax.servlet.http.HttpServletResponse类型响应的统一接口
+ * A unified interface for javax.servlet.http.HttpServletResponse type response
  */
 public class HttpServletResponse {
 
@@ -36,26 +36,26 @@ public class HttpServletResponse {
     /**
      * constructor
      *
-     * @param response http响应实体
+     * @param response http response entity
      */
     public HttpServletResponse(Object response) {
         this.response = response;
     }
 
     /**
-     * 获取http相应实体
+     * Get http corresponding entity
      *
-     * @return http响应实体
+     * @return http response entity
      */
     public Object getResponse() {
         return response;
     }
 
     /**
-     * 设置响应头,覆盖原值
+     * Set the response header to override the original value
      *
-     * @param key   响应头名称
-     * @param value 响应头值
+     * @param key response header name
+     * @param value response header value
      */
     public void setHeader(String key, String value) {
         if (response != null) {
@@ -64,10 +64,10 @@ public class HttpServletResponse {
     }
 
     /**
-     * 设置数字响应头,覆盖原值
+     * Set the digital response header to cover the original value
      *
-     * @param key   响应头名称
-     * @param value 响应头值
+     * @param key response header name
+     * @param value response header value
      */
     public void setIntHeader(String key, int value) {
         if (response != null) {
@@ -76,10 +76,10 @@ public class HttpServletResponse {
     }
 
     /**
-     * 设置响应头，不覆盖
+     * Set response headers, not overwritten
      *
-     * @param key   响应头名称
-     * @param value 响应头值
+     * @param key response header name
+     * @param value response header value
      */
     public void addHeader(String key, String value) {
         if (response != null) {
@@ -88,10 +88,10 @@ public class HttpServletResponse {
     }
 
     /**
-     * 获取响应头
+     * Get response header
      *
-     * @param key 响应头名称
-     * @return 响应头值值
+     * @param key response header name
+     * @return response header value
      */
     public String getHeader(String key) {
         if (response != null) {
@@ -114,9 +114,9 @@ public class HttpServletResponse {
     }
 
     /**
-     * 清除所有 body buffer 缓存
+     * Clear all body buffer cache
      *
-     * @return 是否成功
+     * @return is successful
      */
     public boolean resetBuffer() {
         if (response != null) {
@@ -131,9 +131,9 @@ public class HttpServletResponse {
     }
 
     /**
-     * 清除所有 buffer 缓存
+     * Clear all buffer caches
      *
-     * @return 是否成功
+     * @return is successful
      */
     public boolean reset() {
         if (response != null) {
@@ -148,7 +148,7 @@ public class HttpServletResponse {
     }
 
     /**
-     * 返回异常信息
+     * Return exception information
      */
     public void sendError() {
         if (response != null) {
@@ -177,7 +177,7 @@ public class HttpServletResponse {
     }
 
     /**
-     * 发送自定义错误处理脚本
+     * Send custom error handling scripts
      */
     public void sendContent(String content, boolean close) {
         Object printer = null;

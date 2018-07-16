@@ -19,7 +19,7 @@ package com.baidu.openrasp.exception;
 /**
  * Created by tyy on 4/10/17.
  *
- * 用于做 hook 点拦截的异常
+ * Exception for hook point interception
  */
 public class SecurityException extends RuntimeException {
 
@@ -35,7 +35,7 @@ public class SecurityException extends RuntimeException {
     /**
      * constructor
      *
-     * @param message 安全异常信息
+     * @param message Security Exception Information
      */
     public SecurityException(String message) {
         super(message);

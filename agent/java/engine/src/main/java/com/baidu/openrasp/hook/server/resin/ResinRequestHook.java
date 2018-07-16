@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-2-11.
  *
- * resin 请求处理 hook 点
+ * resin request processing hook point
  */
 public class ResinRequestHook extends ServerRequestHook {
 

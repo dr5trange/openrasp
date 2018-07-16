@@ -24,7 +24,7 @@ import java.io.*;
 
 /**
  * Created by lxk on 17-4-10.
- * 用于导出日志配置
+ * Used to export log configuration
  */
 public class LogConfig {
 
@@ -43,7 +43,7 @@ public class LogConfig {
     }
 
     /**
-     * @param raspRootDirectory rasp根目录
+     * @param raspRootDirectory rasp root directory
      */
     public static void completeLogConfig(String raspRootDirectory) {
         String logConfigFile = raspRootDirectory + SEPARATOR + CONFIGFOLDER + SEPARATOR + CONFIGFILE;
@@ -53,8 +53,8 @@ public class LogConfig {
     }
 
     /**
-     * @param logConfigFile 日志配置文件
-     * @return 配置文件已存在返回true, 否则false
+     * @param logConfigFile log configuration file
+     * @return configuration file already exists to return true, otherwise false
      */
     private static boolean isLogConfigFileExist(String logConfigFile) {
         File configFile = new File(logConfigFile);
@@ -66,8 +66,8 @@ public class LogConfig {
     }
 
     /**
-     * @param raspRootDirectory rasp根目录
-     * @return 导出文件成功返回true, 否则false
+     * @param raspRootDirectory rasp root directory
+     * @return Export file successfully returns true, otherwise false
      */
     private static void extractLogConfigFile(String raspRootDirectory) {
         InputStream inputStream = null;

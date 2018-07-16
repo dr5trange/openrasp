@@ -25,19 +25,19 @@ import java.lang.reflect.Method;
 /**
  * Created by tyy on 3/27/17.
  * All rights reserved
- * 反射工具类
+ * Reflection tool class
  */
 public class Reflection {
     private static final Logger LOGGER = Logger.getLogger(Reflection.class.getName());
 
     /**
-     * 根据方法名调用对象的某一个方法
+     * Calling a method of an object based on the method name
      *
-     * @param object     调用方法的对象
-     * @param methodName 方法名称
-     * @param paramTypes 参数类型列表
-     * @param parameters 参数列表
-     * @return 方法返回值
+     * @param object The object that called the method
+     * @param methodName method name
+     * @param paramTypes list of parameter types
+     * @param parameters parameter list
+     * @return method return value
      */
     public static Object invokeMethod(Object object, String methodName, Class[] paramTypes, Object... parameters) {
         if (object == null) {
@@ -47,9 +47,9 @@ public class Reflection {
     }
 
     /**
-     * 反射调用方法，并把返回值进行强制转换为String
+     * Reflect the calling method and cast the return value to a String
      *
-     * @return 被调用函数返回的String
+     * @return The String returned by the called function
      * @see #invokeMethod(Object, String, Class[], Object...)
      */
     public static String invokeStringMethod(Object object, String methodName, Class[] paramTypes, Object... parameters) {
@@ -58,11 +58,11 @@ public class Reflection {
     }
 
     /**
-     * 反射获取对象的字段包括私有的
+     * The fields of the reflection get object include private
      *
-     * @param object    被提取字段的对象
-     * @param fieldName 字段名称
-     * @return 字段的值
+     * @param object The object of the extracted field
+     * @param fieldName field name
+     * The value of the @return field
      */
     public static Object getField(Object object, String fieldName) throws NoSuchFieldException, IllegalAccessException {
         Field field = object.getClass().getDeclaredField(fieldName);
@@ -71,13 +71,14 @@ public class Reflection {
     }
 
     /**
-     * 调用某一个类的静态方法
+     * Call a static method of a class
      *
-     * @param className  类名
-     * @param methodName 方法名称
-     * @param paramTypes 参数类型列表
-     * @param parameters 参数列表
-     * @return 方法返回值
+     * @param className  Class name 
+
+     * @param methodName method name
+     * @param paramTypes list of parameter types
+     * @param parameters parameter list
+     * @return method return value
      */
     public static Object invokeStaticMethod(String className, String methodName, Class[] paramTypes, Object... parameters) {
         try {

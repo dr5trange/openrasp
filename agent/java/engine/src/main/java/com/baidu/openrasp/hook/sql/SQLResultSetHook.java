@@ -28,7 +28,7 @@ import java.util.HashMap;
 
 /**
  * Created by tyy on 17-11-6.
- * 为检测慢查询添加便利 sql 查询结果的 hook 点
+ * Add a hook point for the convenience of sql query results for detecting slow queries
  */
 public class SQLResultSetHook extends AbstractSqlHook {
 
@@ -123,9 +123,9 @@ public class SQLResultSetHook extends AbstractSqlHook {
     }
 
     /**
-     * 用于 hook Sql 检测结果的 next 方法
+     * The next method for hook Sql detection results
      *
-     * @param ctClass sql 加测结果类
+     * @param ctClass sql plus test result class
      */
     private void hookSqlResultMethod(CtClass ctClass) throws NotFoundException, CannotCompileException {
         String src = getInvokeStaticSrc(SQLResultSetHook.class, "checkSqlQueryResult",
@@ -134,9 +134,9 @@ public class SQLResultSetHook extends AbstractSqlHook {
     }
 
     /**
-     * 检测数据库查询结果
+     * Detect database query results
      *
-     * @param sqlResultSet 数据库查询结果
+     * @param sqlResultSet database query results
      */
     public static void checkSqlQueryResult(String server, Object sqlResultSet) {
         HashMap<String, Object> params = null;

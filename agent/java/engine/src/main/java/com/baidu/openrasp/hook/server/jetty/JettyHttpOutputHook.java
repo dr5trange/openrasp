@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 17-12-13.
  *
- * jetty 输出流关闭 hook 点
+ * jetty output stream closes the hook point
  */
 public class JettyHttpOutputHook extends ServerOutputCloseHook {
 

@@ -24,7 +24,7 @@ import javassist.NotFoundException;
 /**
  * Created by tyy on 17-12-25.
  *
- * catalina 框架下的 request hook 点
+ * request hook point under catalina framework
  */
 public class CatalinaRequestHook extends ServerParamHook {
 

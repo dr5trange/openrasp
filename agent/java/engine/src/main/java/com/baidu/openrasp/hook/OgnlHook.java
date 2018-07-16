@@ -65,9 +65,9 @@ public class OgnlHook extends AbstractClassHook {
     }
 
     /**
-     * struct框架ognl语句解析hook点
+     * struct framework ognl statement parsing hook point
      *
-     * @param expression ognl语句
+     * @param expression ognl statement
      */
     public static void checkOgnlExpression(String expression) {
         if (expression != null) {

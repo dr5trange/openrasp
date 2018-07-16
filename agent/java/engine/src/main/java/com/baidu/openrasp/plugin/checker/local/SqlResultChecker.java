@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by tyy on 17-11-20.
  *
- * sql查询结果检测
+ * sql query result detection
  */
 public class SqlResultChecker extends AttackChecker {
 
@@ -47,7 +47,7 @@ public class SqlResultChecker extends AttackChecker {
         if (queryCount != null) {
             int slowQueryMinCount = Config.getConfig().getSqlSlowQueryMinCount();
             if (queryCount == slowQueryMinCount) {
-                result.add(AttackInfo.createLocalAttackInfo(checkParameter, EventInfo.CHECK_ACTION_INFO, "慢查询: 使用SELECT语句读取了大于等于" + slowQueryMinCount + "条数据"));
+                result.add(AttackInfo.createLocalAttackInfo(checkParameter, EventInfo.CHECK_ACTION_INFO, "Slow query: read with SELECT statement greater than or equal to " + slowQueryMinCount + "bar data"));
             }
         }
         return result;

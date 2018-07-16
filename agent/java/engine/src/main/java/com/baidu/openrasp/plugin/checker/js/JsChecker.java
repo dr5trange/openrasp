@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by tyy on 17-11-20.
  *
- * 使用 js 插件检测
+ * Detection using js plugin
  */
 public class JsChecker extends AttackChecker {
 
@@ -40,10 +40,10 @@ public class JsChecker extends AttackChecker {
     }
 
     /**
-     * 执行js插件进行安全检测
+     * Execute the js plugin for security detection
      *
-     * @param checkParameter 检测参数 {@link CheckParameter}
-     * @return 检测结果
+     * @param checkParameter Detection parameter  {@link CheckParameter}
+     * @return detection result
      */
     @Override
     public List<EventInfo> checkParam(CheckParameter checkParameter) {

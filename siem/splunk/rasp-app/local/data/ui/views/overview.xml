@@ -1,8 +1,8 @@
 <form>
-  <label>总览</label>
+  <label>Overview</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="time" token="time_tok" searchWhenChanged="true">
-      <label>时间区间</label>
+      <label>Time interval</label>
       <default>
         <earliest>@d</earliest>
         <latest>now</latest>
@@ -11,10 +11,10 @@
   </fieldset>
   <row>
     <panel>
-      <title>被攻击域名</title>
+      <title> Attacked domain name </title>
       <table>
         <search>
-          <query>target | chart sparkline count by target | sort -count | rename target as 被攻击域名 sparkline as 攻击趋势 count as 攻击次数</query>
+          <query> Target | chart sparkline count by target | sort -count | rename target as attacked domain name sparkline as attack trend count as attack number </query>
           <earliest>$time_tok.earliest$</earliest>
           <latest>$time_tok.latest$</latest>
         </search>
@@ -26,10 +26,10 @@
       </table>
     </panel>
     <panel>
-      <title>攻击来源</title>
+      <title> Source of attack </title>
       <table>
         <search>
-          <query>attack_source| chart sparkline count by attack_source| sort -count | rename attack_source as 攻击来源 sparkline as 攻击趋势 count as 攻击次数</query>
+          <query> Attack_source| chart sparkline count by attack_source| sort -count | rename attack_source as attack source sparkline as attack trend count as attack times </query>
           <earliest>$time_tok.earliest$</earliest>
           <latest>$time_tok.latest$</latest>
         </search>
@@ -43,10 +43,11 @@
   </row>
   <row>
     <panel>
-      <title>攻击URL</title>
+      <title> Attack URL </title>
       <chart>
         <search>
-          <query>url | top limit=10 url | rename url as "域名" | sort count</query>
+          <query>url | top limit=10 url | rename url as "domain name " | sort count</query>
+
           <earliest>$time_tok.earliest$</earliest>
           <latest>$time_tok.latest$</latest>
           <refresh>1m</refresh>
@@ -56,10 +57,11 @@
       </chart>
     </panel>
     <panel>
-      <title>攻击参数</title>
+      <title> Attack parameter </title>
       <chart>
         <search>
-          <query>attack_params  | top limit=10 attack_params| rename attack_params as "参数" | sort count</query>
+          <query>attack_params  | top limit=10 attack_params| rename attack_params as "parameter " | sort count</query>
+
           <earliest>$time_tok.earliest$</earliest>
           <latest>$time_tok.latest$</latest>
         </search>
@@ -69,7 +71,7 @@
   </row>
   <row>
     <panel>
-      <title>攻击类型分布</title>
+      <title> Attack type distribution </title>
       <chart>
         <search>
           <query>attack_type | stats count by attack_type| sort count</query>
@@ -102,7 +104,7 @@
       </chart>
     </panel>
     <panel>
-      <title>User-Agent分布</title>
+      <title> User-Agent distribution </title>
       <chart>
         <search>
           <query>user_agent  | stats count by user_agent | sort count</query>
@@ -135,7 +137,7 @@
       </chart>
     </panel>
     <panel>
-      <title>应用类型分布</title>
+      <title> Application type distribution </title>
       <chart>
         <search>
           <query>server_type  | stats count by server_type | sort count</query>

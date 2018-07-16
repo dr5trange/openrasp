@@ -23,7 +23,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * @Description:jboss自动卸载
+ * @Description: jboss auto uninstall
  * @author anyang
  * @date 2018/4/25 19:33
  */

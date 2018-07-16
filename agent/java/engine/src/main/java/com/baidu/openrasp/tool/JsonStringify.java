@@ -18,14 +18,14 @@ package com.baidu.openrasp.tool;
 
 /**
  * Created by tyy on 7/6/17.
- * json字符串格式化的工具类
+ * json string formatting tool class
  */
 public class JsonStringify {
 
     /**
-     * 处理字符串中的特殊字符，进行转义处理
-     * @param jsonString 待处理的字符串
-     * @return 处理后的字符串
+     * Handling special characters in strings for escaping
+     * @param jsonString pending string
+     * @return processed string
      */
     public static String stringify(String jsonString) {
         StringBuffer tmpString = new StringBuffer();

@@ -19,7 +19,7 @@ package com.baidu.openrasp.plugin.checker;
 /**
  * Created by tyy on 17-11-27.
  *
- * 攻击类型 hook 点检测
+ * Attack type hook point detection
  */
 public abstract class AttackChecker extends AbstractChecker{
 

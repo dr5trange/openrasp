@@ -1,12 +1,12 @@
 var plugin = new RASP('offical')
 var clean  = {
   action: 'ignore',
-  message: '无风险',
+  message: 'no risk',
   confidence: 0
 }
 
 plugin.register('request', function(params, context) {
-  // 已知的扫描器识别
+  // Known scanner identification
   var foundScanner = false
   var scannerUA    = [
     "attack", "scan", "vulnerability", "injection", "xss",
@@ -32,16 +32,16 @@ plugin.register('request', function(params, context) {
       }
     }
   }
-  // 扫描器识别 DEMO //    
+  // Scanner recognizes DEMO //
   if (foundScanner) {
     return {
       action: 'block',
-      message: '已知的扫描器探测行为: ' + scannerUA[i],
+      message: 'known scanner detection behavior: ' + scannerUA[i],
       confidence: 90
     }
   }
   return clean
 })
 
-plugin.log('002-detect-scanner 加载完成')
+plugin.log('002-detect-scanner loading complete')
 

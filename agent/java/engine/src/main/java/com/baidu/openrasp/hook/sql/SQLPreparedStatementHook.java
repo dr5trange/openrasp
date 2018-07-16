@@ -25,7 +25,7 @@ import java.io.IOException;
 /**
  * Created by tyy on 18-4-28.
  *
- * sql Prepare 查询 hook 点
+ * sql Prepare query hook point
  */
 public class SQLPreparedStatementHook extends AbstractSqlHook {
 

@@ -25,7 +25,7 @@ import javassist.NotFoundException;
 /**
  * Created by tyy on 18-2-11.
  *
- * resin 服务器请求预处理 hook 点
+ * resin server requests pre-processing hook points
  */
 public class ResinPreRequestHook extends ServerPreRequestHook {
 

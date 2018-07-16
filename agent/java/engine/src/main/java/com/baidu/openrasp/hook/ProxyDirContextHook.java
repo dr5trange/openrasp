@@ -65,9 +65,9 @@ public class ProxyDirContextHook extends AbstractClassHook {
     }
 
     /**
-     * 缓存资源文件读取hook点
+     * Cache resource file read hook point
      *
-     * @param resource 文件资源
+     * @param resource file resource
      */
     public static void checkResourceCacheEntry(Object resource) {
         if (resource != null) {

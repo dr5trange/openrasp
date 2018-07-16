@@ -31,7 +31,7 @@ import java.util.UUID;
 /**
  * Created by zhuming01 on 6/23/17.
  * All rights reserved
- * 为不同服务器的不同请求hook点做出的统一格式抽象类
+ * Uniform format abstract class for different request hook points for different servers
  */
 public abstract class AbstractRequest {
     protected static final Class[] EMPTY_CLASS = new Class[]{};
@@ -47,7 +47,7 @@ public abstract class AbstractRequest {
     /**
      * constructor
      *
-     * @see AbstractRequest#AbstractRequest(Object) 默认请求实体为null
+     * @see AbstractRequest#AbstractRequest(Object) The default request entity is null
      */
     public AbstractRequest() {
         this(null);
@@ -56,7 +56,7 @@ public abstract class AbstractRequest {
     /**
      * constructor
      *
-     * @param request 请求实体
+     * @param request request entity
      */
     public AbstractRequest(Object request) {
         this.request = request;
@@ -65,175 +65,175 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 返回是否当前请求能够获取参数内容
+     * Returns whether the current request can get the parameter content
      *
-     * @return 是否能够获取参数内容
+     * @return can get the parameter content
      */
     public boolean isCanGetParameter() {
         return canGetParameter;
     }
 
     /**
-     * 设置是否能够获取参数
+     * Set whether you can get parameters
      *
-     * @param canGetParameter 是否能够获取参数内容
+     * @param canGetParameter Whether to get the parameter content
      */
     public void setCanGetParameter(boolean canGetParameter) {
         this.canGetParameter = canGetParameter;
     }
 
     /**
-     * 设置请求实体，该请求实体在不同的环境中可能是不同的类型
+     * Set the request entity, which may be a different type in different environments
      *
-     * @param request 请求实体
+     * @param request request entity
      */
     public void setRequest(Object request) {
         this.request = request;
     }
 
     /**
-     * 获取请求实体
+     * Get the request entity
      *
-     * @return 请求实体
+     * @return request entity
      */
     public Object getRequest() {
         return this.request;
     }
 
     /**
-     * 获取请求Id
+     * Get Request Id
      *
-     * @return 请求Id
+     * @return request Id
      */
     public String getRequestId() {
         return requestId;
     }
 
     /**
-     * 获取本服务器地址
+     * Get this server address
      *
-     * @return 服务器地址
+     * @return server address
      */
     public abstract String getLocalAddr();
 
     /**
-     * 获取请求方法
+     * Get request method
      *
-     * @return 请求方法
+     * @return request method
      */
     public abstract String getMethod();
 
     /**
-     * 获取请求协议
+     * Get the request agreement
      *
-     * @return 请求协议
+     * @return request protocol
      */
     public abstract String getProtocol();
 
     /**
-     * 获取验证类型
+     * Get verification type
      *
-     * @return 验证类型
+     * @return verification type
      */
     public abstract String getAuthType();
 
     /**
-     * 获取请求路径
+     * Get request path
      *
-     * @return 请求路径
+     * @return request path
      */
     public abstract String getContextPath();
 
     /**
-     * 获取访问客户端的地址
+     * Get the address of the access client
      *
-     * @return 客户端地址
+     * @return client address
      */
     public abstract String getRemoteAddr();
 
     /**
-     * 获取请求的uri
+     * Get the requested uri
      *
-     * @return 请求uri
+     * @return request uri
      */
     public abstract String getRequestURI();
 
     /**
-     * 获取请求的url
+     * Get the requested url
      *
-     * @return 请求的url
+     * @return request url
      */
     public abstract StringBuffer getRequestURL();
 
     /**
-     * 获取服务器名称
+     * Get the server name
      *
-     * @return 服务器名称
+     * @return server name
      */
     public abstract String getServerName();
 
     /**
-     * 根据请求的参数名称，获取请求参数的值
+     * Get the value of the request parameter based on the requested parameter name
      *
-     * @param key 请求参数名称
-     * @return 请求参数的值
+     * @param key request parameter name
+     * @return request parameter value
      */
     public abstract String getParameter(String key);
 
     /**
-     * 获取所有请求参数名称
+     * Get all request parameter names
      *
-     * @return 请求参数名称的枚举集合
+     * @return request collection of parameter names
      */
     public abstract Enumeration<String> getParameterNames();
 
     /**
-     * 获取请求参数的map键值对集合
-     * key为参数名称，value为参数值
+     * Get map key-value pair set of request parameters
+     * key is the parameter name, value is the parameter value
      *
-     * @return 请求参数的map集合
+     * @return map collection of request parameters
      */
     public abstract Map<String, String[]> getParameterMap();
 
     /**
-     * 根据请求头的名称获取请求头的值
+     * Get the value of the request header based on the name of the request header
      *
-     * @param key 请求头的名称
-     * @return 请求头的值
+     * @param key request header name
+     * @return request header value
      */
     public abstract String getHeader(String key);
 
     /**
-     * 获取所有请求头的名称
+     * Get the names of all request headers
      *
-     * @return 请求头名称的枚举集合
+     * @return request enumeration collection of header names
      */
     public abstract Enumeration<String> getHeaderNames();
 
     /**
-     * 获取请求的url中的 Query String 参数部分
+     * Get the Query String parameter part of the requested url
      *
-     * @return 请求的 Query String
+     * @return Requested Query String
      */
     public abstract String getQueryString();
 
     /**
-     * 获取服务器的上下文参数map集合
-     * key为参数名字，value为参数的值
+     * Get the server's context parameter map collection
+     * key is the name of the parameter, and value is the value of the parameter.
      *
-     * @return 服务器上下文参数的map集合
+     * @return map collection of server context parameters
      */
     public abstract Map<String, String> getServerContext();
 
     /**
-     * 获取app部署根路径
+     * Get the app deployment root path
      *
-     * @return app部署根路径
+     * @return app deployment root path
      */
     public abstract String getAppBasePath();
 
     /**
-     * 返回HTTP request body
+     * Return HTTP request body
      *
      * @return request body, can be null
      */
@@ -242,7 +242,7 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 返回HTTP request body stream
+     * Return HTTP request body stream
      *
      * @return request body, can be null
      */
@@ -251,7 +251,7 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 返回input stream
+     * return to input stream
      *
      * @return input stream
      */
@@ -260,7 +260,7 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 设置input stream
+     * Set input stream
      *
      * @param inputStream input stream
      */
@@ -269,9 +269,10 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 添加HTTP request body
+     * Add to HTTP request body
+
      *
-     * @param b 要添加的字节
+     * @param b bytes to be added
      */
     public void appendBody(int b) {
         if (bodyOutputStream == null) {
@@ -284,20 +285,22 @@ public abstract class AbstractRequest {
     }
 
     /**
-     * 添加HTTP request body
+     * Add to HTTP request body
+
      *
-     * @param bytes 要添加的字节数组
+     * @param bytes the byte array to be added
      */
     public void appendBody(byte[] bytes) {
         appendBody(bytes, 0, bytes.length);
     }
 
     /**
-     * 添加HTTP request body
+     * Add to HTTP request body
+
      *
-     * @param bytes  字节数组
-     * @param offset 要添加的起始偏移量
-     * @param len    要添加的长度
+     * @param bytes byte array
+     * @param offset The starting offset to add
+     * @param len length to be added
      */
     public void appendBody(byte[] bytes, int offset, int len) {
         if (bodyOutputStream == null) {

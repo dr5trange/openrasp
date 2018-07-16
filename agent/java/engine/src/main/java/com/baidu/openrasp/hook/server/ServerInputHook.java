@@ -21,7 +21,7 @@ import com.baidu.openrasp.hook.AbstractClassHook;
 /**
  * Created by tyy on 18-2-11.
  *
- * 用于从服务器请求中获取 body 的 hook 点基类
+ * The hook base class used to get the body from the server request
  */
 public abstract class ServerInputHook extends AbstractClassHook{
 

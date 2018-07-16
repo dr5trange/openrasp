@@ -113,7 +113,7 @@ public class SqlConnectionChecker extends PolicyChecker {
                 alarmTimeCache.clear();
             }
             alarmTimeCache.put(url, System.currentTimeMillis());
-            String unsafeMessage = "使用管理员账号" + user + "登录" + sqlType + "数据库:" + urlWithoutParams;
+            String unsafeMessage = "Use administrator account" + user + "login" + sqlType + "database:" + urlWithoutParams;
             infos = new LinkedList<EventInfo>();
             HashMap<String, String> params = new HashMap<String, String>(4);
             params.put("server", sqlType);

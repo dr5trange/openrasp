@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author anyang
- * @Description: jboss自动卸载
+ * @Description: jboss auto uninstall
  * @date 2018/4/25 19:35
  */
 public class Jboss4Uninstaller extends BaseStandardUninstaller {

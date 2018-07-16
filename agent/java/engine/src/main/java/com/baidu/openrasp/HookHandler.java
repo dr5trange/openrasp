@@ -35,7 +35,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Created by zhuming01 on 5/16/17.
  * All rights reserved
- * 在hook增加检测入口的hook点处理类
+ * In the hook increase the detection point of the hook point processing class
  */
 @SuppressWarnings("unused")
 public class HookHandler {
@@ -43,9 +43,9 @@ public class HookHandler {
     public static final String OPEN_RASP_HEADER_VALUE = "OpenRASP";
     public static final String REQUEST_ID_HEADER_KEY = "X-Request-ID";
     public static final Logger LOGGER = Logger.getLogger(HookHandler.class.getName());
-    // 全局开关
+    // global switch
     public static AtomicBoolean enableHook = new AtomicBoolean(false);
-    // 当前线程开关
+    // current thread switch
     private static ThreadLocal<Boolean> enableCurrThreadHook = new ThreadLocal<Boolean>() {
         @Override
         protected Boolean initialValue() {
@@ -76,14 +76,14 @@ public class HookHandler {
     private static final Map<String, Object> EMPTY_MAP = new HashMap<String, Object>();
 
     /**
-     * 用于关闭当前的线程的hook点
+     * used to close the current thread's hook point
      */
     public static void disableCurrThreadHook() {
         enableCurrThreadHook.set(false);
     }
 
     /**
-     * 用于开启当前线程的hook点
+     * used to open the current thread's hook point
      */
     public static void enableCurrThreadHook() {
         enableCurrThreadHook.set(true);
@@ -94,19 +94,19 @@ public class HookHandler {
     }
 
     /**
-     * 用于测试新增hook点，并把hook信息当做log打印
+     * Used to test new hook points and use hook information as log print
      *
-     * @param className hook点类名
-     * @param method    hook点方法名
-     * @param desc      hook点方法描述符
-     * @param args      hook点参数列表
+     * @param className hook point class name
+     * @param method hook method name
+     * @param desc hook point method descriptor
+     * @param args hook point parameter list
      */
     public static void checkCommon(String className, String method, String desc, Object... args) {
         LOGGER.debug("checkCommon: " + className + ":" + method + ":" + desc + " " + Arrays.toString(args));
     }
 
     /**
-     * 进入需要屏蔽hook的方法关闭开关
+     * Enter the method that needs to block the hook to close the switch
      */
     public static void preShieldHook() {
         tmpEnableCurrThreadHook.set(enableCurrThreadHook.get());
@@ -114,7 +114,7 @@ public class HookHandler {
     }
 
     /**
-     * 退出需要屏蔽hook的方法打开开关
+     * Exit the method that needs to block the hook to open the switch
      */
     public static void postShieldHook() {
         if (tmpEnableCurrThreadHook.get()) {
@@ -123,15 +123,15 @@ public class HookHandler {
     }
 
     /**
-     * 请求进入hook点
+     * Request to enter the hook point
      *
-     * @param servlet  servlet对象
-     * @param request  请求实体
-     * @param response 响应实体
+     * @param servlet servlet object
+     * @param request request entity
+     * @param response response entity
      */
     public static void checkRequest(Object servlet, Object request, Object response) {
         if (servlet != null && request != null && !enableCurrThreadHook.get()) {
-            // 默认是关闭hook的，只有处理过HTTP request的线程才打开
+            // The default is to turn off the hook, only the thread that has processed the HTTP request will open.
             enableCurrThreadHook.set(true);
             HttpServletRequest requestContainer = new HttpServletRequest(request);
             HttpServletResponse responseContainer = new HttpServletResponse(response);
@@ -145,8 +145,8 @@ public class HookHandler {
     }
 
     /**
-     * 请求结束hook点
-     * 请求结束后不可以在进入任何hook点
+     * Request to end the hook point
+     * You cannot enter any hook point after the request ends.
      */
     public static void onServiceExit() {
         enableCurrThreadHook.set(false);
@@ -154,11 +154,11 @@ public class HookHandler {
     }
 
     /**
-     * 在过滤器中进入的hook点
+     * Hook points entered in the filter
      *
-     * @param filter   过滤器
-     * @param request  请求实体
-     * @param response 响应实体
+     * @param filter filter
+     * @param request request entity
+     * @param response response entity
      */
     public static void checkFilterRequest(Object filter, Object request, Object response) {
         checkRequest(filter, request, response);
@@ -216,10 +216,10 @@ public class HookHandler {
     }
 
     /**
-     * 无需在请求线程中执行的检测入口
+     * No need to detect the execution of the entry in the request thread
      *
-     * @param type   检测类型
-     * @param params 检测参数map，key为参数名，value为检测参数值
+     * @param type detection type
+     * @param params detection parameter map, key is the parameter name, value is the detection parameter value
      */
     public static void doCheckWithoutRequest(CheckParameter.Type type, Object params) {
         long a = 0;
@@ -250,10 +250,10 @@ public class HookHandler {
     }
 
     /**
-     * 请求线程检测入口
+     * Request thread detection entry
      *
-     * @param type   检测类型
-     * @param params 检测参数map，key为参数名，value为检测参数值
+     * @param type detection type
+     * @param params detection parameter map, key is the parameter name, value is the detection parameter value
      */
     public static void doCheck(CheckParameter.Type type, Object params) {
         if (enableHook.get() && enableCurrThreadHook.get()) {

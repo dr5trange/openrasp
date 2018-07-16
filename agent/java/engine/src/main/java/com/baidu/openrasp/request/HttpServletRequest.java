@@ -27,16 +27,16 @@ import java.util.regex.Pattern;
 /**
  * Created by zhuming01 on 6/15/17.
  * All rights reserved
- * javax.servlet.http.HttpServletRequest类请求的统一格式接口
+ * Uniform format interface requested by javax.servlet.http.HttpServletRequest class
  */
 public final class HttpServletRequest extends AbstractRequest {
     private static final Map<String, String[]> EMPTY_PARAM = new HashMap<String, String[]>();
     private static final Pattern PATTERN = Pattern.compile("\\d+(\\.\\d+)*");
 
     /**
-     * 请求实体
+     * Requesting entity
      *
-     * @param request 类型为javax.servlet.http.HttpServletRequest的请求实体
+     * @param request request entity of type javax.servlet.http.HttpServletRequest
      */
     public HttpServletRequest(Object request) {
         super(request);
@@ -244,10 +244,10 @@ public final class HttpServletRequest extends AbstractRequest {
     }
 
     /**
-     * 根据服务器信息获取服务器类型
+     * Get server type based on server information
      *
-     * @param serverInfo 服务器信息
-     * @return 服务器类型
+     * @param serverInfo server information
+     * @return server type
      */
     public static String extractType(String serverInfo) {
         if (serverInfo == null) {
@@ -261,10 +261,10 @@ public final class HttpServletRequest extends AbstractRequest {
     }
 
     /**
-     * 获取服务器版本号
+     * Get the server version number
      *
-     * @param serverInfo 服务器信息
-     * @return 服务器版本号
+     * @param serverInfo server information
+     * @return server version number
      */
     public static String extractNumber(String serverInfo) {
         if (serverInfo == null) {
@@ -275,10 +275,10 @@ public final class HttpServletRequest extends AbstractRequest {
     }
 
     /**
-     * 增加session条目
+     * Increase session entries
      *
-     * @param key   键
-     * @param value 值
+     * @param key key 
+     * @param value @
      */
     public void setSessionAttribute(String key, String value) {
         Object session = getSessionObject();
@@ -286,9 +286,9 @@ public final class HttpServletRequest extends AbstractRequest {
     }
 
     /**
-     * 获取指定键对应session
+     * Get the specified key corresponding to the session
      *
-     * @param key 键
+     * @param key key 
      */
     public Object getSessionAttribute(String key) {
         Object session = getSessionObject();
@@ -323,10 +323,10 @@ public final class HttpServletRequest extends AbstractRequest {
         }
     }
 
-    //--------------------------------私有方法-------------------------------------
+    //--------------------------------Private method -------------- -----------------------
 
     /**
-     * 反射获取session object
+     * reflection gets session object
      *
      * @return
      */
@@ -335,7 +335,7 @@ public final class HttpServletRequest extends AbstractRequest {
     }
 
     /**
-     * 反射获取servletContext object
+     * reflection gets the servletContext object
      *
      * @return
      */

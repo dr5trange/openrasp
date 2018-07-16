@@ -76,8 +76,8 @@ public class App {
             showHelp();
             return;
         }
-        //参数0：rasp安装根目录
-        //参数1：-install 安装，-uninstall 卸载
+        / / parameter 0: rasp installation root directory
+        //Parameter 1: -install install, -uninstall uninstall
         try {
             if ("-install".equals(args[0])) {
                 File serverRoot = new File(args[1]);

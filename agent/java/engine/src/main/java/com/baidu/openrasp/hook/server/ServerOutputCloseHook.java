@@ -31,8 +31,8 @@ import java.io.IOException;
 /**
  * Created by tyy on 17-12-13.
  *
- * 服务器 http 输出关闭 hook 点基类
- * 用于向输出流中插入自定义内容
+ * Server http output closes the hook base class
+ * used to insert custom content into the output stream
  */
 public abstract class ServerOutputCloseHook extends AbstractClassHook {
 
@@ -59,17 +59,17 @@ public abstract class ServerOutputCloseHook extends AbstractClassHook {
     }
 
     /**
-     * hook 方法
+     * hook method
      *
-     * @param ctClass hook 点所在的类
-     * @param src     加入 hook点的代码
+     * @param ctClass hook The class in which the point is located
+     * @param src code to add a hook point
      */
     protected abstract void hookMethod(CtClass ctClass, String src) throws NotFoundException, CannotCompileException;
 
     /**
-     * 向响应的 html 页面插入自定义 js 脚本
+     * Insert a custom js script into the responsive html page
      *
-     * @param output 输出流
+     * @param output output stream
      */
     public static void appendResponseData(Object output) {
         if (HookHandler.enableHook.get() && HookHandler.isEnableCurrThreadHook()) {

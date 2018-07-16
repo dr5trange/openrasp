@@ -1,5 +1,5 @@
 /**
-* 手动生成的 shim，去掉了 es6.array，否则会异常
+* Manually generated shim, remove es6.array, otherwise it will be abnormal
 */
 /**
  * core-js 2.5.1

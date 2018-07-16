@@ -7,7 +7,7 @@ var plugin = new RASP('example');
 
 var clean = {
     action: 'ignore',
-    message: '无风险'
+    message: 'no risk'
 };
 
 var xssRegex = /<script|script>|<iframe|iframe>|javascript:(?!(?:history\.(?:go|back)|void\(0\)))/i;
@@ -50,14 +50,14 @@ plugin.register('directory', function (params) {
     if (path.indexOf('/../../../') !== -1) {
         return {
             action: 'block',
-            message: '目录遍历攻击'
+            message: 'directory traversal attack'
         };
     }
 
     if (sysRegex.test(path)) {
         return {
             action: 'block',
-            message: '读取系统目录'
+            message: 'read system directory'
         };
     }
     return clean;
@@ -68,14 +68,14 @@ plugin.register('readFile', function (params) {
     if (path.indexOf('/../../../') !== -1) {
         return {
             action: 'block',
-            message: '目录遍历攻击'
+            message: 'directory traversal attack'
         };
     }
 
     if (sysRegex.test(path)) {
         return {
             action: 'block',
-            message: '读取系统文件'
+            message: 'read system file'
         };
     }
     return clean;
@@ -89,7 +89,7 @@ plugin.register('fileUpload', function (params) {
     if (nameRegex.test(params.filename)) {
         return {
             action: 'block',
-            message: '尝试上传脚本文件: ' + params.filename
+            message: 'Try uploading script file: ' + params.filename
         };
     }
     return clean;
@@ -99,7 +99,7 @@ plugin.register('sql', function (params) {
     if (sqlRegex.test(params.query)) {
         return {
             action: 'block',
-            message: 'SQL 注入攻击'
+            message: 'SQL injection attack'
         };
     }
     return clean;
@@ -108,7 +108,7 @@ plugin.register('sql', function (params) {
 plugin.register('command', function (params) {
     return {
         action: 'block',
-        message: '尝试执行命令'
+        message: 'Try to execute command'
     };
 });
 
@@ -123,14 +123,14 @@ plugin.register('xxe', function (params) {
         if (protocol === 'gopher') {
             return {
                 action: 'block',
-                message: 'SSRF 攻击（gopher 协议)'
+                message: 'SSRF attack (gopher protocol)'
             };
         }
 
         if (protocol === 'file') {
             return {
                 action: 'log',
-                message: '尝试读取外部实体 (file 协议)'
+                message: 'Try to read external entity (file protocol)'
             };
         }
     }
@@ -143,7 +143,7 @@ plugin.register('ognl', function (params) {
         if (ognlExpression.indexOf(ognlPayloads[index]) > -1) {
             return {
                 action: 'block',
-                message: '尝试ognl远程命令执行'
+                message: 'Try ognl remote command execution'
             };
         }
 
@@ -157,7 +157,7 @@ plugin.register('deserialization', function (params) {
         if (clazz === deserializationInvalidClazz[index]) {
             return {
                 action: 'block',
-                message: '尝试反序列化攻击'
+                message: 'Try to deserialize the attack'
             };
         }
     }

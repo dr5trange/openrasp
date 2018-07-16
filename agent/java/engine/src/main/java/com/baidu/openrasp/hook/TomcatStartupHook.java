@@ -26,7 +26,7 @@ import java.io.IOException;
 
 /**
  * Created by tyy on 8/9/17.
- * 用于hook tomcat启动函数
+ * for hook tomcat startup function
  */
 public class TomcatStartupHook extends AbstractClassHook {
 
@@ -52,7 +52,7 @@ public class TomcatStartupHook extends AbstractClassHook {
     }
 
     /**
-     * tomcat启动时检测安全规范
+     * tomcat detection security specification at startup
      */
     public static void checkTomcatStartup() {
         HookHandler.doCheckWithoutRequest(CheckParameter.Type.POLICY_TOMCAT_START, CheckParameter.EMPTY_MAP);

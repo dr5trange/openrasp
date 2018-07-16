@@ -26,14 +26,14 @@ import java.net.URLDecoder;
 
 /**
  * Created by tyy on 4/7/17.
- * 文件工具类
+ * File Tools
  */
 public class FileUtil {
     /**
-     * 读取文件内容
+     * Read file contents
      *
-     * @param file 文件对象
-     * @return 文件字符串内容
+     * @param file file object
+     * @return file string content
      * @throws IOException {@link IOException}
      */
     public static String readFileByFile(File file) throws IOException {
@@ -41,10 +41,10 @@ public class FileUtil {
     }
 
     /**
-     * 还原文件真实路径,避免绕过
+     * Restore the real path of the file to avoid bypassing
      *
-     * @param file 文件
-     * @return 真实文件路径su
+     * @param file file
+     * @return real file path su
      */
     public static String getRealPath(File file) {
         String absPath = file.getAbsolutePath();
@@ -62,9 +62,9 @@ public class FileUtil {
     }
 
     /**
-     * 获取当前jar包所在的文件夹路径
+     * Get the folder path where the current jar package is located
      *
-     * @return jar包所在文件夹路径
+     * @return jar package folder path
      */
     public static String getBaseDir() {
         String baseDir;

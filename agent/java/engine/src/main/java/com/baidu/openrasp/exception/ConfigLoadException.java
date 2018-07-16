@@ -18,7 +18,7 @@ package com.baidu.openrasp.exception;
 
 /**
  * Created by tyy on 9/21/17.
- * 加载配置时发生的错误
+ * Errors occurred while loading the configuration
  */
 public class ConfigLoadException extends RuntimeException {
 
@@ -33,7 +33,7 @@ public class ConfigLoadException extends RuntimeException {
     /**
      * constructor
      *
-     * @param message 加载配置异常信息
+     * @param message Load configuration exception information
      */
     public ConfigLoadException(String message) {
         super(message);

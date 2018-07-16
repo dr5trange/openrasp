@@ -25,7 +25,7 @@ import java.io.IOException;
 
 /**
  * Created by tyy on 9/12/17.
- * servlet过滤器hook类
+ * servlet filter hook class
  */
 public class ApplicationFilterHook extends ServerRequestHook {
 

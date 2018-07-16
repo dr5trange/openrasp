@@ -26,7 +26,7 @@ import java.io.File;
 
 /**
  * Created by tyy on 4/17/17.
- * 文件事件的监视器，监视单位为文件夹
+ * Monitor of file events, monitoring unit is folder
  */
 public class FileScanMonitor {
 
@@ -36,11 +36,11 @@ public class FileScanMonitor {
     }
 
     /**
-     * 增加监视器
+     * Increase monitor
      *
-     * @param path     监听的文件夹路径
-     * @param listener 事件回调接口
-     * @return 监听器的id
+     * @param path Listening folder path
+     * @param listener event callback interface
+     * @return listener id
      * @throws JNotifyException {@link JNotifyException}
      */
     public static int addMonitor(String path, FileAlterationListener listener) throws JNotifyException {
@@ -54,9 +54,9 @@ public class FileScanMonitor {
     }
 
     /**
-     * 移除某一个文件夹监听
+     * Remove a folder to listen to
      *
-     * @param watchId 增加文件夹监听的时候返回的监听器id
+     * @param watchId Increases the listener id returned when the folder listens
      */
     public static void removeMonitor(int watchId) {
         try {

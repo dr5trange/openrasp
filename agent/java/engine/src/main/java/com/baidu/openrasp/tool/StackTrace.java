@@ -21,14 +21,14 @@ import java.util.List;
 
 /**
  * Created by tyy on 3/28/17.
- * 获取栈信息工具类
+ * Get stack information tool class
  */
 public class StackTrace {
 
     /**
-     * 获取栈信息
+     * Get stack information
      *
-     * @return 栈信息
+     * @return stack information
      */
     public static String getStackTrace() {
 
@@ -36,7 +36,7 @@ public class StackTrace {
         StackTraceElement[] stackTraceElements = throwable.getStackTrace();
         StringBuilder retStack = new StringBuilder();
 
-        //此处前几个调用栈都是插件中产生的所以跳过，只显示客户自己的调用栈
+        / / Here the first few call stacks are generated in the plugin, so skip, only show the client's own call stack
         if (stackTraceElements.length >= 3) {
             for (int i = 2; i < stackTraceElements.length; i++) {
                 retStack.append(stackTraceElements[i].getClassName() + "@" + stackTraceElements[i].getMethodName()
@@ -53,9 +53,9 @@ public class StackTrace {
     }
 
     /**
-     * 获取原始栈
+     * Get the original stack
      *
-     * @return 原始栈
+     * @return original stack
      */
     public static List<String> getStackTraceArray(int startIndex, int depth) {
 

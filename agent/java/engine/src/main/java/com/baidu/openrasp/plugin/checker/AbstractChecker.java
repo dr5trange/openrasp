@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by tyy on 17-11-20.
  *
- * hook点参数检测接口
+ * hook point parameter detection interface
  */
 public abstract class AbstractChecker implements Checker {
 
@@ -73,10 +73,10 @@ public abstract class AbstractChecker implements Checker {
     }
 
     /**
-     * 实现参数检测逻辑
+     * Implement parameter detection logic
      *
-     * @param checkParameter 检测参数
-     * @return 检测结果
+     * @param checkParameter detection parameters
+     * @return detection result
      */
     public abstract List<EventInfo> checkParam(CheckParameter checkParameter);
 
