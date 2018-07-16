@@ -58,7 +58,7 @@ public abstract class EventInfo {
 
     protected StackTraceElement[] filter(StackTraceElement[] trace) {
         int i = 0;
-        / / Remove the plugin itself call stack
+        // Remove the plugin itself call stack
         while (trace[i].getClassName().startsWith("com.baidu.openrasp") && i < trace.length) {
             i++;
         }

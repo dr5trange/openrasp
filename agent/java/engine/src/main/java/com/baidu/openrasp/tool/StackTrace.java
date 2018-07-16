@@ -36,7 +36,7 @@ public class StackTrace {
         StackTraceElement[] stackTraceElements = throwable.getStackTrace();
         StringBuilder retStack = new StringBuilder();
 
-        / / Here the first few call stacks are generated in the plugin, so skip, only show the client's own call stack
+        // Here the first few call stacks are generated in the plugin, so skip, only show the client's own call stack
         if (stackTraceElements.length >= 3) {
             for (int i = 2; i < stackTraceElements.length; i++) {
                 retStack.append(stackTraceElements[i].getClassName() + "@" + stackTraceElements[i].getMethodName()

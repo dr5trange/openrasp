@@ -52,7 +52,7 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
             throw new RaspError(E10003 + script.getAbsolutePath());
         }
 
-        / / Restore the script modified during installation
+        // Restore the script modified during installation
         System.out.println("Updating startup script\n- " + script.getCanonicalPath());
         String original = BaseStandardInstaller.read(script);
         String modified = recoverStartScript(original);
@@ -75,7 +75,7 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
                 temp.delete();
             }
             if (temp.isDirectory()) {
-                / / First delete the files inside the folder
+                // First delete the files inside the folder
                 delAllFile(path + File.separator + s);
                 // delete the empty folder again
                 delRaspFolder(path + File.separator + s);
@@ -91,7 +91,7 @@ public abstract class BaseStandardUninstaller implements Uninstaller {
         }
         // Delete all files and subfolders in the rasp folder
         delAllFile(folderPath);
-        / / Delete rasp empty folder
+        // Delete rasp empty folder
         folder.delete();
 
     }

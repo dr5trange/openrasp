@@ -117,7 +117,7 @@ public class JsPluginManager {
      * @throws Exception
      */
     private synchronized static void updatePlugin() throws Exception {
-        / / Clear the algorithm.config configuration
+        // Clear the algorithm.config configuration
         Config.getConfig().setAlgorithmConfig("{}");
         boolean oldValue = HookHandler.enableHook.getAndSet(false);
         File pluginDir = new File(Config.getConfig().getScriptDirectory());

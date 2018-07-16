@@ -76,7 +76,7 @@ function normalize_query(query) {
     return tokens.join(' ')
 }
 
-/ / Record the SQL log, may bring the following two problems
+// Record the SQL log, may bring the following two problems
 // 1. Sensitive information may be included in the query
 // 2. The amount of logs can be very large
 plugin.register('sql', function (params, context) {

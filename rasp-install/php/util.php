@@ -20,7 +20,7 @@ const FOUND 		= 1;
 const FINSH 		= 2;
 
 
-/ / Get the Linux distribution
+// Get the Linux distribution
 function get_linux_release_name() {
 	if (file_exists("/etc/debian_version")) {
 		return LINUX_UBUNTU;
@@ -31,7 +31,7 @@ function get_linux_release_name() {
 	}
 }
 
-/ / Get the operating system
+// Get the operating system
 function get_OS() {
 	if (stristr(PHP_OS, 'DAR')) {
 		return OS_OSX;
@@ -44,7 +44,7 @@ function get_OS() {
 	}
 }
 
-/ / Get ini_scanned_path
+// Get ini_scanned_path
 function get_ini_scanned_path() {
 	$ini_scanned_files = php_ini_scanned_files();
 	if ($ini_scanned_files) {
@@ -124,7 +124,7 @@ function recurse_copy($src,$dst) {
     closedir($dir); 
 } 
 
-/ / Installation process display
+// Installation process display
 function major_tips($message, $done = FALSE) {
 	global $index;
 	echo <<<MSG

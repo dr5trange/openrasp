@@ -52,7 +52,7 @@ public abstract class BaseStandardInstaller implements Installer {
         File installDir = new File(getInstallPath(serverRoot));
 
         if (!srcDir.getCanonicalPath().equals(installDir.getCanonicalPath())) {
-            / / Copy rasp folder
+            // Copy rasp folder
             System.out.println("Duplicating \"rasp\" directory\n- " + installDir.getCanonicalPath());
             FileUtils.copyDirectory(srcDir, installDir);
         }
@@ -60,7 +60,7 @@ public abstract class BaseStandardInstaller implements Installer {
         System.out.println("Make \"rasp\" directory writable\n");
         modifyFolerPermission(installDir.getCanonicalPath());
 
-        / / Generate a configuration file
+        // Generate a configuration file
         if (!generateConfig(installDir.getPath())) {
             System.exit(1);
         }
@@ -71,7 +71,7 @@ public abstract class BaseStandardInstaller implements Installer {
             throw new RaspError(E10003 + script.getAbsolutePath());
         }
 
-        / / Modify the server startup script
+        // Modify the server startup script
         System.out.println("Updating startup script\n- " + script.getCanonicalPath());
         String original = read(script);
         String modified = modifyStartScript(original);

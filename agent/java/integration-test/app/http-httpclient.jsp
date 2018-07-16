@@ -15,7 +15,7 @@
             BufferedReader br = null;
             HttpGet httpGet = new HttpGet("http://0x7f.0x0.0x0.0x1:8080/app");
             HttpResponse res = client.execute(httpGet);
-            / / Read the server response data
+            // Read the server response data
             br = new BufferedReader(new InputStreamReader(res.getEntity().getContent()));
             String temp;
             resultBuffer = new StringBuffer();

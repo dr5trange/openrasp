@@ -76,7 +76,7 @@ public class App {
             showHelp();
             return;
         }
-        / / parameter 0: rasp installation root directory
+        // parameter 0: rasp installation root directory
         //Parameter 1: -install install, -uninstall uninstall
         try {
             if ("-install".equals(args[0])) {

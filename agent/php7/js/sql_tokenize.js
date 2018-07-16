@@ -478,7 +478,7 @@ function escapeWhitespace(s, escapeSpaces) {
          .replace(/\n/g, "\\n")
          .replace(/\r/g, "\\r");
     if (escapeSpaces) {
-        s = s.replace(/ /g, "\u00B7");
+        s = s.replace(//g, "\u00B7");
     }
     return s;
 }
@@ -1370,7 +1370,7 @@ RecognitionException.prototype.constructor = RecognitionException;
 //
 // @return The set of token types that could potentially follow the current
 // state in the ATN, or {@code null} if the information is not available.
-// /
+///
 RecognitionException.prototype.getExpectedTokens = function() {
     if (this.recognizer!==null) {
         return this.recognizer.atn.getExpectedTokens(this.offendingState, this.ctx);
@@ -1739,13 +1739,13 @@ function PredictionContext(cachedHashCode) {
 
 // Represents {@code $} in local context prediction, which means wildcard.
 // {@code//+x =//}.
-// /
+///
 PredictionContext.EMPTY = null;
 
 // Represents {@code $} in an array in full context mode, when {@code $}
 // doesn't mean wildcard: {@code $ + x = [$,x]}. Here,
 // {@code $} = {@link //EMPTY_RETURN_STATE}.
-// /
+///
 PredictionContext.EMPTY_RETURN_STATE = 0x7FFFFFFF;
 
 PredictionContext.globalNodeCount = 1;
@@ -1757,7 +1757,7 @@ PredictionContext.id = PredictionContext.globalNodeCount;
 // <pre>
 // private int referenceHashCode() {
 // int hash = {@link MurmurHash//initialize MurmurHash.initialize}({@link
-// //INITIAL_HASH});
+////INITIAL_HASH});
 //
 // for (int i = 0; i &lt; {@link //size()}; i++) {
 // hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link //getParent
@@ -1766,15 +1766,15 @@ PredictionContext.id = PredictionContext.globalNodeCount;
 //
 // for (int i = 0; i &lt; {@link //size()}; i++) {
 // hash = {@link MurmurHash//update MurmurHash.update}(hash, {@link
-// //getReturnState getReturnState}(i));
+////getReturnState getReturnState}(i));
 // }
 //
 // hash = {@link MurmurHash//finish MurmurHash.finish}(hash, 2// {@link
-// //size()});
+////size()});
 // return hash;
 // }
 // </pre>
-// /
+///
 
 // This means only the {@link //EMPTY} context is in set.
 PredictionContext.prototype.isEmpty = function() {
@@ -2008,7 +2008,7 @@ ArrayPredictionContext.prototype.toString = function() {
 
 // Convert a {@link RuleContext} tree to a {@link PredictionContext} graph.
 // Return {@link //EMPTY} if {@code outerContext} is empty or null.
-// /
+///
 function predictionContextFromRuleContext(atn, outerContext) {
 	if (outerContext === undefined || outerContext === null) {
 		outerContext = RuleContext.EMPTY;
@@ -2094,7 +2094,7 @@ function merge(a, b, rootIsWildcard, mergeCache) {
 // @param rootIsWildcard {@code true} if this is a local-context merge,
 // otherwise false to indicate a full-context merge
 // @param mergeCache
-// /
+///
 function mergeSingletons(a, b, rootIsWildcard, mergeCache) {
 	if (mergeCache !== null) {
 		var previous = mergeCache.get(a, b);
@@ -2210,11 +2210,11 @@ function mergeSingletons(a, b, rootIsWildcard, mergeCache) {
 // @param b the second {@link SingletonPredictionContext}
 // @param rootIsWildcard {@code true} if this is a local-context merge,
 // otherwise false to indicate a full-context merge
-// /
+///
 function mergeRoot(a, b, rootIsWildcard) {
 	if (rootIsWildcard) {
 		if (a === PredictionContext.EMPTY) {
-			return PredictionContext.EMPTY; // // + b =//
+			return PredictionContext.EMPTY; //// + b =//
 		}
 		if (b === PredictionContext.EMPTY) {
 			return PredictionContext.EMPTY; // a +// =//
@@ -2255,7 +2255,7 @@ function mergeRoot(a, b, rootIsWildcard) {
 // <p>Equal tops, merge parents and reduce top to
 // {@link SingletonPredictionContext}.<br>
 // <embed src="images/ArrayMerge_EqualTop.svg" type="image/svg+xml"/></p>
-// /
+///
 function mergeArrays(a, b, rootIsWildcard, mergeCache) {
 	if (mergeCache !== null) {
 		var previous = mergeCache.get(a, b);
@@ -2363,7 +2363,7 @@ function mergeArrays(a, b, rootIsWildcard, mergeCache) {
 //
 // Make pass over all <em>M</em> {@code parents}; merge any {@code equals()}
 // ones.
-// /
+///
 function combineCommonParents(parents) {
 	var uniqueParents = {};
 
@@ -3012,7 +3012,7 @@ function ATNConfigSet(fullCtx) {
 //
 // <p>This method updates {@link //dipsIntoOuterContext} and
 // {@link //hasSemanticContext} when necessary.</p>
-// /
+///
 ATNConfigSet.prototype.add = function(config, mergeCache) {
 	if (mergeCache === undefined) {
 		mergeCache = null;
@@ -3646,7 +3646,7 @@ PredPrediction.prototype.toString = function() {
 // <p>A DFA state may have multiple references to a particular state,
 // but with different ATN contexts (with same or different alts)
 // meaning that state was reached via a different set of rule invocations.</p>
-// /
+///
 
 function DFAState(stateNumber, configs) {
 	if (stateNumber === null) {
@@ -3663,7 +3663,7 @@ function DFAState(stateNumber, configs) {
 	this.isAcceptState = false;
 	// if accept state, what ttype do we match or alt do we predict?
 	// This is set to {@link ATN//INVALID_ALT_NUMBER} when {@link
-	// //predicates}{@code !=null} or
+	////predicates}{@code !=null} or
 	// {@link //requiresFullContext}.
 	this.prediction = 0;
 	this.lexerActionExecutor = null;
@@ -3820,7 +3820,7 @@ function Lexer(input) {
 
 	// You can set the text for the current token to override what is in
 	// the input char buffer. Use setText() or can set this instance var.
-	// /
+	///
 	this._text = null;
 
 	return this;
@@ -3928,7 +3928,7 @@ Lexer.prototype.nextToken = function() {
 // a lexer rule finishes with token set to SKIP_TOKEN. Recall that
 // if token==null at end of any token rule, it creates one for you
 // and emits it.
-// /
+///
 Lexer.prototype.skip = function() {
 	this._type = Lexer.SKIP;
 };
@@ -3984,7 +3984,7 @@ Object.defineProperty(Lexer.prototype, "sourceName", {
 // for efficiency reasons. Subclass and override this method, nextToken,
 // and getToken (to push tokens into a list and pull from that list
 // rather than a single variable as this implementation does).
-// /
+///
 Lexer.prototype.emitToken = function(token) {
 	this._token = token;
 };
@@ -3994,7 +3994,7 @@ Lexer.prototype.emitToken = function(token) {
 // char buffer start..stop. If there is a text override in 'text',
 // use that to set the token's text. Override this method to emit
 // custom Token objects or provide a new factory.
-// /
+///
 Lexer.prototype.emit = function() {
 	var t = this._factory.create(this._tokenFactorySourcePair, this._type,
 			this._text, this._channel, this._tokenStartCharIndex, this
@@ -4063,7 +4063,7 @@ Object.defineProperty(Lexer.prototype, "text", {
 });
 // Return a list of all Token objects in input char stream.
 // Forces load of all tokens. Does not include EOF token.
-// /
+///
 Lexer.prototype.getAllTokens = function() {
 	var tokens = [];
 	var t = this.nextToken();
@@ -4114,7 +4114,7 @@ Lexer.prototype.getCharErrorDisplay = function(c) {
 // a token, so do the easy thing and just kill a character and hope
 // it all works out. You can instead use the rule invocation stack
 // to do sophisticated error recovery if you are in a fragment rule.
-// /
+///
 Lexer.prototype.recover = function(re) {
 	if (this._input.LA(1) !== Token.EOF) {
 		if (re instanceof LexerNoViableAltException) {
@@ -4215,7 +4215,7 @@ RuleContext.prototype.getPayload = function() {
 // Since tokens on hidden channels (e.g. whitespace or comments) are not
 // added to the parse trees, they will not appear in the output of this
 // method.
-// /
+///
 RuleContext.prototype.getText = function() {
 	if (this.getChildCount() === 0) {
 		return "";
@@ -4843,7 +4843,7 @@ function ParserRuleContext(parent, invokingStateNumber) {
     // with this rule's context. This is empty for parsing w/o tree constr.
     // operation because we don't the need to track the details about
     // how we parse this rule.
-    // /
+    ///
     this.children = null;
     this.start = null;
     this.stop = null;
@@ -4895,7 +4895,7 @@ ParserRuleContext.prototype.addChild = function(child) {
 // * Used by enterOuterAlt to toss out a RuleContext previously added as
 // we entered a rule. If we have // label, we will need to remove
 // generic ruleContext object.
-// /
+///
 ParserRuleContext.prototype.removeLastChild = function() {
     if (this.children !== null) {
         this.children.pop();
@@ -7294,7 +7294,7 @@ DefaultErrorStrategy.prototype.reportMissingToken = function(recognizer) {
 // the {@code LA(2)} token) as the successful result of the match operation.</p>
 //
 // <p>This recovery strategy is implemented by {@link
-// //singleTokenDeletion}.</p>
+////singleTokenDeletion}.</p>
 //
 // <p><strong>MISSING TOKEN</strong> (single token insertion)</p>
 //
@@ -7305,7 +7305,7 @@ DefaultErrorStrategy.prototype.reportMissingToken = function(recognizer) {
 // result of the match operation.</p>
 //
 // <p>This recovery strategy is implemented by {@link
-// //singleTokenInsertion}.</p>
+////singleTokenInsertion}.</p>
 //
 // <p><strong>EXAMPLE</strong></p>
 //
@@ -8152,7 +8152,7 @@ function BufferedTokenStream(tokenSource) {
 	// prevent
 	// consuming the EOF symbol is optimized by checking the values of
 	// {@link //fetchedEOF} and {@link //p} instead of calling {@link
-	// //LA}.</li>
+	////LA}.</li>
 	// <li>{@link //fetch}: The check to prevent adding multiple EOF symbols
 	// into
 	// {@link //tokens} is trivial with this field.</li>
@@ -8214,7 +8214,7 @@ BufferedTokenStream.prototype.consume = function() {
 // @return {@code true} if a token is located at index {@code i}, otherwise
 // {@code false}.
 // @see //get(int i)
-// /
+///
 BufferedTokenStream.prototype.sync = function(i) {
 	var n = i - this.tokens.length + 1; // how many more elements we need?
 	if (n > 0) {
@@ -8227,7 +8227,7 @@ BufferedTokenStream.prototype.sync = function(i) {
 // Add {@code n} elements to buffer.
 //
 // @return The actual number of elements added to the buffer.
-// /
+///
 BufferedTokenStream.prototype.fetch = function(n) {
 	if (this.fetchedEOF) {
 		return 0;
@@ -8337,7 +8337,7 @@ BufferedTokenStream.prototype.setTokenSource = function(tokenSource) {
 // Given a starting index, return the index of the next token on channel.
 // Return i if tokens[i] is on channel. Return -1 if there are no tokens
 // on channel between i and EOF.
-// /
+///
 BufferedTokenStream.prototype.nextTokenOnChannel = function(i, channel) {
 	this.sync(i);
 	if (i >= this.tokens.length) {
@@ -10172,7 +10172,7 @@ LexerATNSimulator.prototype.getEpsilonTarget = function(input, config, trans,
 //
 // @return {@code true} if the specified predicate evaluates to
 // {@code true}.
-// /
+///
 LexerATNSimulator.prototype.evaluatePredicate = function(input, ruleIndex,
 		predIndex, speculative) {
 	// assume true if no recognizer was provided
@@ -10222,7 +10222,7 @@ LexerATNSimulator.prototype.addDFAEdge = function(from_, tk, to, cfgs) {
 		// TJP notes: next time through the DFA, we see a pred again and eval.
 		// If that gets us to a previously created (but dangling) DFA
 		// state, we can continue in pure DFA mode from there.
-		// /
+		///
 		var suppressEdge = cfgs.hasSemanticContext;
 		cfgs.hasSemanticContext = false;
 
@@ -10391,7 +10391,7 @@ LexerActionExecutor.append = function(lexerActionExecutor, lexerAction) {
 //
 // @return A {@link LexerActionExecutor} which stores input stream offsets
 // for all position-dependent lexer actions.
-// /
+///
 LexerActionExecutor.prototype.fixOffsetBeforeMatch = function(offset) {
 	var updatedLexerActions = null;
 	for (var i = 0; i < this.lexerActions.length; i++) {
@@ -10428,7 +10428,7 @@ LexerActionExecutor.prototype.fixOffsetBeforeMatch = function(offset) {
 // @param startIndex The token start index. This value may be passed to
 // {@link IntStream//seek} to set the {@code input} position to the beginning
 // of the token.
-// /
+///
 LexerActionExecutor.prototype.execute = function(lexer, input, startIndex) {
 	var requiresSeek = false;
 	var stopIndex = input.index;

@@ -89,7 +89,7 @@ public class SecurityPolicyInfo extends EventInfo {
         info.put("server_version", getCatalinaServerVersion());
         // Security specification detection information
         info.put("message", message);
-        / / Detection parameter information
+        // Detection parameter information
         if(params !=null){
             info.put("params",params);
         }

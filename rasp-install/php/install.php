@@ -21,7 +21,7 @@ For more details visit: https://rasp.baidu.com/doc/install/software.html
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR .'util.php');
 
-/ / Get the absolute path of lib to be installed
+// Get the absolute path of lib to be installed
 function get_lib_2b_installed($current_os, $lib_filename)
 {
 	$machine_type_convertion = array(

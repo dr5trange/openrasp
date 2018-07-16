@@ -662,7 +662,7 @@ public class Config extends FileScanListener {
             }
         } catch (Exception e) {
             if (isInit) {
-                / / Initial configuration process, if the error needs to continue to use the default value to execute
+                // Initial configuration process, if the error needs to continue to use the default value to execute
                 throw new ConfigLoadException(e);
             }
             LOGGER.info("configuration item \"" + key + "\" failed to change to \"" + value + "\"" + " because:" + e.getMessage());

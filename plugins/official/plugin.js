@@ -29,7 +29,7 @@ var algorithmConfig = {
     sqli_userinput: {
         action: 'block'
     },
-    / / SQL injection algorithm #1 - whether to intercept the database manager, the default is off, there is a need to change to block
+    // SQL injection algorithm #1 - whether to intercept the database manager, the default is off, there is a need to change to block
     sqli_dbmanager: {
         action: 'ignore'
     },
@@ -49,11 +49,11 @@ var algorithmConfig = {
             // function blacklist, see the list below, select load_file(...)
             'function_blacklist': true,
 
-            / / Intercept union select NULL, NULL or union select 1, 2, 3, 4
+            // Intercept union select NULL, NULL or union select 1, 2, 3, 4
             'union_null':         true,
 
             // Whether to disable constant comparison, AND 8333=8555
-            / / When the code is not standardized, the constant comparison algorithm will cause a lot of false positives, so this feature is no longer enabled by default.
+            // When the code is not standardized, the constant comparison algorithm will cause a lot of false positives, so this feature is no longer enabled by default.
             'constant_compare':   false,
         },
         function_blacklist: {
@@ -422,7 +422,7 @@ function is_from_userinput(parameter, target) {
 // Start
 
 if (RASP.get_jsengine() !== 'v8') {
-    / / In the java language, in order to improve performance, SQLi / SSRF detection logic changed to java implementation
+    // In the java language, in order to improve performance, SQLi / SSRF detection logic changed to java implementation
     // So we need to pass some of the configuration to java
     RASP.config_set('algorithm.config', JSON.stringify(algorithmConfig))
 } else {
@@ -482,7 +482,7 @@ if (RASP.get_jsengine() !== 'v8') {
         // 2. Identify the database manager
         if (algorithmConfig.sqli_userinput.action != 'ignore') {
             Object.keys(parameters).some(function (name) {
-                / / Cover two cases, the latter only PHP support
+                // Cover two cases, the latter only PHP support
                 // 
                 // ?id=XXXX
                 // ?filter[category_id]=XXXX
@@ -497,7 +497,7 @@ if (RASP.get_jsengine() !== 'v8') {
                 for (var i = 0; i < value_list.length; i ++) {
                     var value = value_list[i]
 
-                    / / Request parameter length is more than 15 to consider, any cross-table query requires at least 20 characters, in fact, can write a larger point
+                    // Request parameter length is more than 15 to consider, any cross-table query requires at least 20 characters, in fact, can write a larger point
                     // SELECT * FROM admin
                     // and updatexml(....)
                     if (value.length <= 15) {
@@ -505,7 +505,7 @@ if (RASP.get_jsengine() !== 'v8') {
                     }
                    
                     if (value.length == params.query.length && value == params.query) {
-                        / / Whether to intercept the database manager, please change to 1 if necessary
+                        // Whether to intercept the database manager, please change to 1 if necessary
                         if (algorithmConfig.sqli_dbmanager.action != 'ignore') {
                             reason = 'Algorithm 2: WebShell - Intercept database manager - Attack parameters: ' + name
                             return true
@@ -514,7 +514,7 @@ if (RASP.get_jsengine() !== 'v8') {
                         }
                     }
 
-                    / / Simple identification of user input
+                    // Simple identification of user input
                     if (params.query.indexOf(value) == -1) {
                         continue
                     }
@@ -744,11 +744,11 @@ if (RASP.get_jsengine() !== 'v8') {
 
 }
 
-/ / Mainly used to identify the file manager in the webshell
+// Mainly used to identify the file manager in the webshell
 // Usually the program does not actively list directories or view sensitive directories, eg /home /etc /var/log etc.
 // 
 // If there are exceptions to adjust
-/ / Can be combined with business customization: eg can not exceed the application root directory
+// Can be combined with business customization: eg can not exceed the application root directory
 plugin.register('directory', function (params, context) {
     var path        = params.path
     var realpath    = params.realpath
@@ -817,7 +817,7 @@ plugin.register('readFile', function (params, context) {
         if (filename_1 == filename_2) {
             var matched = false
 
-            / / Try to download compressed packages, SQL files, etc.
+            // Try to download compressed packages, SQL files, etc.
             if (forcefulBrowsing.dotFiles.test(filename_1)) {
                 matched = true
             } else {
@@ -881,7 +881,7 @@ plugin.register('readFile', function (params, context) {
     //
     // Algorithm 4: Intercept any file download vulnerability, the file to be read comes from user input, and there is no path stitching
     //
-    / / does not affect the normal operation, eg
+    // does not affect the normal operation, eg
     // ?path=download/1.jpg
     // 
     if (algorithmConfig.readFile_userinput.action != 'ignore')
@@ -1021,7 +1021,7 @@ plugin.register('include', function (params, context) {
 
 plugin.register('writeFile', function (params, context) {
 
-    / / Write NTFS stream file, certainly not normal
+    // Write NTFS stream file, certainly not normal
     if (algorithmConfig.writeFile_NTFS.action != 'ignore') 
     {
         if (ntfsRegex.test(params.realpath)) {
@@ -1160,7 +1160,7 @@ plugin.register('command', function (params, context) {
                 }
 
                 // Intercept only if the command itself is from a reflection call
-                / / If a class is a reflection call, this class then actively execute the command, then ignore
+                // If a class is a reflection call, this class then actively execute the command, then ignore
                 if (! method.startsWith('java.') && ! method.startsWith('sun.') && !method.startsWith('com.sun.')) {
                     userCode = true
                 }
@@ -1195,7 +1195,7 @@ plugin.register('command', function (params, context) {
 
     // Algorithm 2: Command execution is disabled by default
     // Change to log or ignore if needed
-    / / Or according to the URL to decide whether to allow the execution of the command
+    // Or according to the URL to decide whether to allow the execution of the command
 
     // Starting with v0.31, when the command is executed from a non-HTTP request, we will also detect the deserialization attack.
     // But should not intercept normal command execution, so add a context.url check here

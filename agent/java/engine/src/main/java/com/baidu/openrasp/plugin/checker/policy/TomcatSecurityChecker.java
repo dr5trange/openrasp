@@ -101,7 +101,7 @@ public class TomcatSecurityChecker extends PolicyChecker {
             }
 
             if (!isHttpOnly) {
-                infos.add(new SecurityPolicyInfo(Type.COOKIE_HTTP_ONLY, "tomcat does not configure global httpOnly." in the conf/context.xml file, true));
+                infos.add(new SecurityPolicyInfo(Type.COOKIE_HTTP_ONLY, "tomcat does not configure global httpOnly in the conf/context.xml file", true));
             }
         }
     }

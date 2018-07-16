@@ -103,7 +103,7 @@ public class EngineBoot implements Module {
                 }
             }
         }
-        / / hook has been loaded class
+        // hook has been loaded class
         Class[] classes = new Class[retransformClasses.size()];
         retransformClasses.toArray(classes);
         if (classes.length > 0) {
